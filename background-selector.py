@@ -1,4 +1,5 @@
 import pygame
+
 pygame.font.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 30)
 selector_width = 100
