@@ -2,6 +2,8 @@ import pygame
 import sys
 from button import Button
 import os
+import re
+import PIL
 
 pygame.init()
 pygame.mixer.init()
@@ -12,8 +14,10 @@ BG = pygame.image.load("assets/background.jpg")
 clock = pygame.time.Clock()
 running = True
 MUSIC_END = pygame.USEREVENT+1
+CURRENT_SONG = 'Main-Menu'
+CURRENT_LOC = 'Japan'
 
-
+# change this if we want to do it based on location
 class Playlist:
     def __init__(self, dir):
         self.songs = []
@@ -26,9 +30,16 @@ class Playlist:
                 
 
     def play(self):
-        print(self.static_songs)
         if len(self.songs) > 0:
             pygame.mixer.music.load(self.songs[0])
+            
+            global CURRENT_SONG
+            
+            title = (self.songs[0]).replace('assets', '')
+            title = title.replace('.wav', '')
+            title = re.sub('\/.*?\/','', title)
+            CURRENT_SONG = title
+        
             self.songs.pop(0)
             pygame.mixer.music.play()
             pygame.mixer.music.set_endevent(MUSIC_END)
@@ -49,13 +60,25 @@ class Playlist:
 jp = Playlist('assets/Japan')
 usa = Playlist('assets/USA')
 fr = Playlist('assets/French')
+ca = Playlist('assets/Canada')
+mx = Playlist('assets/Mexico')
+kr = Playlist('assets/Korea')
+ity = Playlist('assets/Italy')
+ind = Playlist('assets/India')
 
-playlists = [jp,usa,fr]
+
+
+playlists = [jp,usa,fr, ca, mx, kr, ity, ind]
 
 
 
 def get_font(size): # Returns Press-Start-2P in the desired size
     return pygame.font.Font("assets/font.ttf", size)
+
+def get_font_cjk(size): # Returns Press-Start-2P in the desired size
+    return pygame.font.Font("assets/cjk.ttf", size)
+
+
 
 def search():
     return
@@ -78,17 +101,28 @@ def change(dir):
         jp.play()
     if dir == 'French':
         fr.play()
+    if dir == 'Canada':
+        ca.play()
+    if dir == 'India':
+        ind.play()
+    if dir == 'Korea':
+        kr.play()
+    if dir == 'Mexico':
+        mx.play()
+    if dir == 'Italy':
+        ity.play()
+    if dir == 'USA':
+        usa.play()
     pass
 
 
 
 
 def main_menu():
-   
     
     startbackground()
     P=0
-    currentlocation = 'French'
+    
     
     SEARCH_BUTTON = Button(image=pygame.image.load("assets/Options Rect.png"), pos=(640, 400), 
                             text_input="Search for a Country", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
@@ -98,7 +132,6 @@ def main_menu():
     # FInally works bruv
     MUTE_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/volume.png'), (100,100)), pos=(50,670),  text_input="", font=get_font(0), base_color="#d7fcd4", hovering_color="White")
     TEST_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/mbut.png'), (100,100)), pos=(1100,670),  text_input="", font=get_font(0), base_color="#d7fcd4", hovering_color="White")
-
     
     while True:
         
@@ -109,12 +142,20 @@ def main_menu():
         MENU_TEXT = get_font(100).render("Worldview Wanderer", True, "#b68f40")
         MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
 
+
+        # Now Playing Bar
+        curr = f"NOW PLAYING: {CURRENT_SONG}"
+        w = get_font_cjk(40)
+        text = w.render(curr, True, 'white')
+        length = text.get_size()
         
+        NOW_PLAYING = Button(image=pygame.transform.scale(pygame.image.load("assets/Quit Rect.png"), (1.1*length[0], 1.1*length[1]) ), pos=(640, 650), 
+            text_input=f"{curr}", font=get_font_cjk(40), base_color="#d7fcd4", hovering_color="White")
 
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-        for button in [SEARCH_BUTTON, QUIT_BUTTON, MUTE_BUTTON, TEST_BUTTON]:
+        for button in [SEARCH_BUTTON, QUIT_BUTTON, MUTE_BUTTON, TEST_BUTTON, NOW_PLAYING]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
         
@@ -140,7 +181,8 @@ def main_menu():
                         resume()
                         P=0
                 if TEST_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    change(currentlocation)
+                    change(CURRENT_LOC)
+                    
                     
             for p in playlists:
                     if event.type == MUSIC_END and len(p.songs) == 0:
