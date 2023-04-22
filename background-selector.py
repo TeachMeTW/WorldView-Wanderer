@@ -18,12 +18,12 @@ right_selector = pygame.image.load("KTjAXb7Tq-2709733076.png").convert_alpha()
 left_selector = pygame.transform.scale(left_selector, [selector_width, selector_height])
 right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
 
-images = ["country images\japan\mfuji.png", 
-          "country images\japan\sushi dai.png", 
-          "country images\japan\mtokyo tower.png",
-          "country images\japan\imperial palace.png",
-          "country images\japan\ichiran.png",
-          "country images\japan\sensoji temple.png"
+images = ["country images/japan/mfuji.png", 
+          "country images/japan/sushi dai.png", 
+          "country images/japan/mtokyo tower.png",
+          "country images/japan/imperial palace.png",
+          "country images/japan/ichiran.png",
+          "country images/japan/sensoji temple.png"
           ]
 
 image_data = [("Picture 1", (0, 0, 0)),   
@@ -64,6 +64,8 @@ def previous_image():
     display_current_image()
 
 running = True
+
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
