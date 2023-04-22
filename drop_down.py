@@ -124,7 +124,7 @@ while run:
     screen.fill((255, 255, 255))
     clock_surface = render_pst_clock(font, -7+(timezone_dict[temp]))
     date_surface = render_date(font_date, date_timezone_dict[temp])
-    screen.blit(date_surface, (1107, 80))
+    screen.blit(date_surface, (1110, 80))
     screen.blit(clock_surface, (screen.get_width() - clock_surface.get_width() - 30, 30))
 
     #else:
