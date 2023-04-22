@@ -77,7 +77,7 @@ COLOR_LIST_ACTIVE = (37, 94, 150)
 list1 = DropDown(
     [COLOR_INACTIVE, COLOR_ACTIVE],
     [COLOR_LIST_INACTIVE, COLOR_LIST_ACTIVE],
-    5, 5, 200, 40, 
+    30, 30, 200, 40, 
     font,
     "Select Country", ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "South Korea","USA"])
 
@@ -111,7 +111,7 @@ while run:
 
     screen.fill((255, 255, 255))
     clock_surface = render_pst_clock(font, -7+(timezone_dict[temp]))
-    screen.blit(clock_surface, (screen.get_width() - clock_surface.get_width() - 15, 15))
+    screen.blit(clock_surface, (screen.get_width() - clock_surface.get_width() - 30, 30))
 
     #else:
     #screen.blit(render_pst_clock(font, -7), (screen.get_width() - clock_surface.get_width() - 15, 15))
