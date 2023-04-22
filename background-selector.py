@@ -47,12 +47,12 @@ class japanMap():
 
 class canadaMap():
     images_canada = [
-        "country images\canada\malo.png",
-        "country images\canada\Chateau_Frotenac.png",
-        "country images\canada\CN_tower.png",
-        "country images\canada\Niagara Falls.png",
-        "country images\canada\Poutineville.png",
-        "country images\canada\Stanley Park.png",
+        "countryimages\canada\malo.png",
+        "countryimages\canada\Chateau_Frotenac.png",
+        "countryimages\canada\CN_tower.png",
+        "countryimages\canada\Niagara Falls.png",
+        "countryimages\canada\Poutineville.png",
+        "countryimages\canada\Stanley Park.png",
         ]
 class usaMap():
     images_usa = [
