@@ -8,17 +8,17 @@ screen_width = 1920
 screen_height = 1080
 
 pygame.init()
-
+current_image_index = 0
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Image Selector")
-
+images_japan = ["countryimages\\japan\\mfuji.png"]
 left_selector = pygame.image.load("left-arrow-png-left-icon-1600-2971489872.png").convert_alpha()
 right_selector = pygame.image.load("KTjAXb7Tq-2709733076.png").convert_alpha()
 
 left_selector = pygame.transform.scale(left_selector, [selector_width, selector_height])
 right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
+current_image = pygame.image.load(images_japan[current_image_index]).convert_alpha()
 
-current_text_index = my_font.render('Cute Cat', False, (0, 0, 0))
 
 image_position = (screen_width // 2 - current_image.get_width() // 2, screen_height // 2 - current_image.get_height() // 2)
 
