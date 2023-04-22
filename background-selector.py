@@ -19,12 +19,7 @@ left_selector = pygame.transform.scale(left_selector, [selector_width, selector_
 right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
 
 
-
-class canadaMap():
-    index = 0
-    img = []
-    def __init__(self):
-        images = [
+canada_images = [
             "countryimages/canada/malo.png",
             "countryimages/canada/Chateau_Frotenac.png",
             "countryimages/canada/CN_tower.png",
@@ -32,7 +27,13 @@ class canadaMap():
             "countryimages/canada/Poutineville.png",
             "countryimages/canada/Stanley Park.png",
         ]
-        for i in images:
+
+class CountryMap():
+    index = 0
+    img = []
+    def __init__(self, image_list):
+
+        for i in image_list:
             self.img.append(i)
         self.index = 0
     def left(self):
@@ -48,56 +49,56 @@ class canadaMap():
         current_image = pygame.image.load(self.img[self.index])
         screen.blit(current_image, (100,100))
     
-class usaMap():
-    images_usa = [
-        "countryimages/usa/GGB.png",
-        "countryimages/usa/gateway.png",
-        "countryimages/usa/in out.png",
-        "countryimages/usa/katz.png",
-        "countryimages/usa/rushmore.png",
-        "countryimages/usa/yellowstone.png",
-        ]
 
-class franceMap():
-    images_france = [
-        "countryimages/france/arc de trimophe.png",
-        "countryimages/france/comptoir.png",
-        "countryimages/france/eiffel.png",
-        "countryimages/france/notre dame.png",
-        "countryimages/france/tour.png",
-        "countryimages/france/versailles.png"  
-        ]
-
-class italyMap(): 
-    images_italy = [
-        "countryimages/italy/coloseeum.png",
-        "countryimages/italy/duomo.png",
-        "countryimages/italy/enzo.png",
-        "countryimages/italy/Osteria.png",
-        "countryimages/italy/pisa.png"
-        "countryimages/italy/cinque.png"
+images_usa = [
+    "countryimages/usa/GGB.png",
+    "countryimages/usa/gateway.png",
+    "countryimages/usa/in out.png",
+    "countryimages/usa/katz.png",
+    "countryimages/usa/rushmore.png",
+    "countryimages/usa/yellowstone.png",
     ]
 
-class koreaMap():
-    images_korea = [
-        "countryimages/korea/gwanghwaum.png",
-        "countryimages/korea/gwangjang.png",
-        "countrymages/korea/jeju.png",
-        "countryimages/korea/kyoja.png",
-        "countryimages/korea/namsan.png",
-        "countryimages/korea/palace.png"
-        ]
-class mexicoMap(): 
-        images_mexico = [
-            "countryimages/mexico/Cancun.png",
-            "countryimages/mexico/Chichen Itza.png",
-            "countryimages/mexico/La-Carnita.png",
-            "countryimages/mexico/Palacio-De-Bellas-Artes.png",
-            "countryimages/mexico/Pujol.png",
-            "countryimages/mexico/Teotihuacan-022.jpg"
-        ]
 
-images = ["country images/japan/mfuji.png", 
+images_france = [
+    "countryimages/france/arc de trimophe.png",
+    "countryimages/france/comptoir.png",
+    "countryimages/france/eiffel.png",
+    "countryimages/france/notre dame.png",
+    "countryimages/france/tour.png",
+    "countryimages/france/versailles.png"  
+    ]
+
+
+images_italy = [
+    "countryimages/italy/coloseeum.png",
+    "countryimages/italy/duomo.png",
+    "countryimages/italy/enzo.png",
+    "countryimages/italy/Osteria.png",
+    "countryimages/italy/pisa.png"
+    "countryimages/italy/cinque.png"
+]
+
+
+images_korea = [
+    "countryimages/korea/gwanghwaum.png",
+    "countryimages/korea/gwangjang.png",
+    "countrymages/korea/jeju.png",
+    "countryimages/korea/kyoja.png",
+    "countryimages/korea/namsan.png",
+    "countryimages/korea/palace.png"
+    ]
+
+images_mexico = [
+    "countryimages/mexico/Cancun.png",
+    "countryimages/mexico/Chichen Itza.png",
+    "countryimages/mexico/La-Carnita.png",
+    "countryimages/mexico/Palacio-De-Bellas-Artes.png",
+    "countryimages/mexico/Pujol.png",
+    "countryimages/mexico/Teotihuacan-022.jpg"
+]
+
+japan_images = ["country images/japan/mfuji.png", 
           "country images/japan/sushi dai.png", 
           "country images/japan/mtokyo tower.png",
           "country images/japan/imperial palace.png",
@@ -113,7 +114,7 @@ current_image_index = 0
 
 
 
-cmap = canadaMap()
+canmap = CountryMap(canada_images)
 
 
 
@@ -127,14 +128,14 @@ while running:
             running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                cmap.left()
+                canmap.left()
             elif event.key == pygame.K_RIGHT:
-                cmap.right()
+                canmap.right()
             elif event.key == pygame.K_ESCAPE:
                 running = False 
 
     screen.fill((255, 255, 255))
-    cmap.display()
+    canmap.display()
     screen.blit(left_selector, dest=(400, 540))
     screen.blit(right_selector, dest = (1400, 540))
     # screen.blit(current_text_index, dest=(900, 800))
