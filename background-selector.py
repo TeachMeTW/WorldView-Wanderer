@@ -39,7 +39,11 @@ class canadaMap():
         self.index+=1
         current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
         screen.blit(current_image, (100,100))
-    
+    def right(self):
+        self.index -= 1
+        current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
+        screen.blit(current_image, (100, 100))
+
     def display(self):
         current_image = pygame.image.load(self.img[self.index])
         screen.blit(current_image, (100,100))
@@ -125,7 +129,7 @@ while running:
             if event.key == pygame.K_LEFT:
                 cmap.left()
             elif event.key == pygame.K_RIGHT:
-                pass
+                cmap.right()
             elif event.key == pygame.K_ESCAPE:
                 running = False 
 
