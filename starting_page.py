@@ -23,11 +23,17 @@ def startbackground():
     bckgr = pygame.mixer.Sound('assets/jazz.wav')
     pygame.mixer.Sound.play(bckgr)
     
-def endbackground():
-    pygame.mixer.music.stop()
+def pause():
+    pygame.mixer.pause()
+    
+def resume():
+    pygame.mixer.unpause()
+    
+
 
 def main_menu():
     startbackground()
+    P=0
     while True:
         
         SCREEN.blit(BG, (0,0))
@@ -41,10 +47,16 @@ def main_menu():
                             text_input="Search for a Country", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
         QUIT_BUTTON = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(640, 550), 
                             text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
+        
+
+        # FInally works bruv
+        SONGBUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/mbut.png'), (200,200)), pos=(640,300),  text_input="", font=get_font(0), base_color="#d7fcd4", hovering_color="White")
+
+
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-        for button in [SEARCH_BUTTON, QUIT_BUTTON]:
+        for button in [SEARCH_BUTTON, QUIT_BUTTON, SONGBUTTON]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
         
@@ -58,6 +70,16 @@ def main_menu():
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
+                if SONGBUTTON.checkForInput(MENU_MOUSE_POS):
+                    if P==0:
+                        pause()
+                        P=1
+                    else:
+                        resume()
+                        P=0
+                
+                    
+                    
 
         pygame.display.update()
 
