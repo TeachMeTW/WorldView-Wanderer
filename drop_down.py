@@ -1,6 +1,7 @@
 import pygame as pg
 import random
 import datetime
+import pytz
 
 class DropDown():
 
@@ -54,6 +55,7 @@ class DropDown():
                     return self.display_options[self.active_option]
         return -1
 
+
 def render_pst_clock(font, st):
     pst = datetime.timezone(datetime.timedelta(hours= st))
     now = datetime.datetime.now(pst)
@@ -61,12 +63,21 @@ def render_pst_clock(font, st):
     time_surface = font.render(time_str, True, (0, 0, 0))
     return time_surface
 
+def render_date(font, timezone):
+    date = datetime.datetime.now(pytz.timezone(timezone))
+    my_date = (str(date)).split()
+    my_date = my_date[0].split('-')
+    date_str = datetime.date(day=int(my_date[2]), month=int(my_date[1]), year=int(my_date[0])).strftime('%B %d, %Y')
+    date_surface = font.render(date_str, True, (0, 0, 0))
+    return date_surface
+
 pg.init()
 clock = pg.time.Clock()
 
 window_size = (1280, 720)
 screen = pg.display.set_mode(window_size)
-font = pg.font.Font("assets/font.ttf", 40)
+font = pg.font.Font("assets/font.ttf", 45)
+font_date = pg.font.Font("assets/font.ttf", 40)
 
 COLOR_ACTIVE = (148, 208, 242)
 COLOR_INACTIVE = (16, 109, 163)
@@ -78,17 +89,15 @@ list1 = DropDown(
     [COLOR_LIST_INACTIVE, COLOR_LIST_ACTIVE],
     30, 30, 200, 40, 
     font,
-<<<<<<< HEAD
-    "Select Destination", 
-    ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "South Korea","USA"])
-=======
     "Select Destination", ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "South Korea","USA"])
->>>>>>> 93fbbca2f8e1f8e892ecdb6070bc16cbf17262b2
 
 #timezone dictionary 
 timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9, 
                  "India":12.5, "Italy":9, "Japan":16, "Mexico":1, 
                  "South Korea":16, "USA":3}
+
+date_timezone_dict={0:"America/Los_Angeles","Japan":"Asia/Tokyo", "India":"Asia/Calcutta", "China":"Asia/Chongqing", "France":"Europe/Paris", "Germany":"Europe/Paris", 
+                    "Italy":"Europe/Paris", "Canada":"Canada/Atlantic", "Mexico":"America/Mexico_City", "South Korea":"Asia/Seoul", "USA":"America/Fort_Wayne"}
 run = True
 temp = 0
 while run:
@@ -103,13 +112,8 @@ while run:
     selected_option = list1.update(event_list)
 
     if str(selected_option) != '-1':
-<<<<<<< HEAD
-        list1.main = "Select Destination"
-        temp = selected_option
-=======
         list1.main = 'Select Destination' 
         temp = selected_option   
->>>>>>> 93fbbca2f8e1f8e892ecdb6070bc16cbf17262b2
     else:
         list1.draw(screen)
         pg.display.flip()
@@ -119,6 +123,8 @@ while run:
 
     screen.fill((255, 255, 255))
     clock_surface = render_pst_clock(font, -7+(timezone_dict[temp]))
+    date_surface = render_date(font_date, date_timezone_dict[temp])
+    screen.blit(date_surface, (1110, 80))
     screen.blit(clock_surface, (screen.get_width() - clock_surface.get_width() - 30, 30))
 
     #else:
