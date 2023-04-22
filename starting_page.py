@@ -29,6 +29,10 @@ def pause():
 def resume():
     pygame.mixer.unpause()
     
+# When changing countries, change the music.    
+def change():
+    pass
+    
 
 
 def main_menu():
@@ -47,10 +51,9 @@ def main_menu():
                             text_input="Search for a Country", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
         QUIT_BUTTON = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(640, 550), 
                             text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        
 
         # FInally works bruv
-        SONGBUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/mbut.png'), (200,200)), pos=(640,300),  text_input="", font=get_font(0), base_color="#d7fcd4", hovering_color="White")
+        SONGBUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/mbut.png'), (100,100)), pos=(50,670),  text_input="", font=get_font(0), base_color="#d7fcd4", hovering_color="White")
 
 
 
