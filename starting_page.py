@@ -67,15 +67,15 @@ class Playlist:
 jp = Playlist('assets/Japan')
 usa = Playlist('assets/USA')
 fr = Playlist('assets/French')
-ca = Playlist('assets/Canada')
-mx = Playlist('assets/Mexico')
-kr = Playlist('assets/Korea')
-ity = Playlist('assets/Italy')
-ind = Playlist('assets/India')
+# ca = Playlist('assets/Canada')
+# mx = Playlist('assets/Mexico')
+# kr = Playlist('assets/Korea')
+# ity = Playlist('assets/Italy')
+# ind = Playlist('assets/India')
 
 
 
-playlists = [jp,usa,fr, ca, mx, kr, ity, ind]
+playlists = [jp,usa,fr]
 
 
 
@@ -110,12 +110,12 @@ right_selector = pygame.image.load("KTjAXb7Tq-2709733076.png").convert_alpha()
 left_selector = pygame.transform.scale(left_selector, [selector_width, selector_height])
 right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
 
-images = ["country images/japan/mfuji.png", 
-        "country images/japan/sushi dai.png", 
-        "country images/japan/mtokyo tower.png",
-        "country images/japan/imperial palace.png",
-        "country images/japan/ichiran.png",
-        "country images/japan/sensoji temple.png"
+images = ["countryimages/japan/mfuji.png", 
+        "countryimages/japan/sushi dai.png", 
+        "countryimages/japan/mtokyo tower.png",
+        "countryimages/japan/imperial palace.png",
+        "countryimages/japan/ichiran.png",
+        "countryimages/japan/sensoji temple.png"
         ]
 
 image_data = [("Picture 1", (0, 0, 0)),   
