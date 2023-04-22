@@ -8,7 +8,7 @@ screen_width = 1920
 screen_height = 1080
 
 pygame.init()
-current_image_index = 0
+
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Image Selector")
 
@@ -17,16 +17,6 @@ right_selector = pygame.image.load("KTjAXb7Tq-2709733076.png").convert_alpha()
 
 left_selector = pygame.transform.scale(left_selector, [selector_width, selector_height])
 right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
-
-
-canada_images = [
-            "countryimages/canada/malo.png",
-            "countryimages/canada/Chateau_Frotenac.png",
-            "countryimages/canada/CN_tower.png",
-            "countryimages/canada/Niagara Falls.png",
-            "countryimages/canada/Poutineville.png",
-            "countryimages/canada/Stanley Park.png",
-        ]
 
 class CountryMap():
     index = 0
@@ -49,7 +39,14 @@ class CountryMap():
         current_image = pygame.image.load(self.img[self.index])
         screen.blit(current_image, (100,100))
     
-
+canada_images = [
+            "countryimages/canada/malo.png",
+            "countryimages/canada/Chateau_Frotenac.png",
+            "countryimages/canada/CN_tower.png",
+            "countryimages/canada/Niagara Falls.png",
+            "countryimages/canada/Poutineville.png",
+            "countryimages/canada/Stanley Park.png",
+    ]
 images_usa = [
     "countryimages/usa/GGB.png",
     "countryimages/usa/gateway.png",
@@ -106,22 +103,29 @@ japan_images = ["country images/japan/mfuji.png",
           "country images/japan/sensoji temple.png"
           ]
 
+india_images = ["countryimages/india/bukhara.png",
+                "countryimages/india/gateway of india.png",
+                "countryimages/india/india gate.png",
+                "countryimages/india/karim.png",
+                "countryimages/india/red fort.png",
+                "countryimages/india/taj mahal.png"]
+
 image_data = [("Picture 1", (0, 0, 0)),   
               ("Picture 2", (255, 0, 0)),
               ("Picture 3", (0, 255, 0))]
 
-current_image_index = 0
-
-
 
 canmap = CountryMap(canada_images)
-
-
+# usmap = CountryMap(images_usa)
+# frmap = CountryMap(images_france)
+# itmap = CountryMap(images_italy)
+# kormap = CountryMap(images_korea)
+# mexmap = CountryMap(images_mexico)
+# japanmap = CountryMap(japan_images)
+# indiamap = CountryMap(india_images)
 
 
 running = True
-
-
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -138,7 +142,6 @@ while running:
     canmap.display()
     screen.blit(left_selector, dest=(400, 540))
     screen.blit(right_selector, dest = (1400, 540))
-    # screen.blit(current_text_index, dest=(900, 800))
     pygame.display.flip()
 
 pygame.quit()
