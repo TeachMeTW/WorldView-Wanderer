@@ -66,20 +66,20 @@ clock = pg.time.Clock()
 
 window_size = (1280, 720)
 screen = pg.display.set_mode(window_size)
-
 font = pg.font.Font("assets/font.ttf", 40)
 
 COLOR_ACTIVE = (148, 208, 242)
 COLOR_INACTIVE = (16, 109, 163)
 COLOR_LIST_INACTIVE = (98, 156, 102)
-COLOR_LIST_ACTIVE = (37, 94, 150)
+COLOR_LIST_ACTIVE = (108, 186, 122)
 
 list1 = DropDown(
     [COLOR_INACTIVE, COLOR_ACTIVE],
     [COLOR_LIST_INACTIVE, COLOR_LIST_ACTIVE],
     30, 30, 200, 40, 
     font,
-    "Select Country", ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "South Korea","USA"])
+    "Select Destination", 
+    ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "South Korea","USA"])
 
 #timezone dictionary 
 timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9, 
@@ -99,8 +99,8 @@ while run:
     selected_option = list1.update(event_list)
 
     if str(selected_option) != '-1':
-        list1.main = 'Select Country' 
-        temp = selected_option   
+        list1.main = "Select Destination"
+        temp = selected_option
     else:
         list1.draw(screen)
         pg.display.flip()
