@@ -59,7 +59,7 @@ images_italy = [
 images_korea = [
     "countryimages/korea/gwanghwaum.png",
     "countryimages/korea/gwangjang.png",
-    "countrymages/korea/jeju.png",
+    "countryimages/korea/jeju.png",
     "countryimages/korea/kyoja.png",
     "countryimages/korea/namsan.png",
     "countryimages/korea/palace.png"
