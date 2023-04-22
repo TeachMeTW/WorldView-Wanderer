@@ -18,6 +18,10 @@ right_selector = pygame.image.load("KTjAXb7Tq-2709733076.png").convert_alpha()
 left_selector = pygame.transform.scale(left_selector, [selector_width, selector_height])
 right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
 
+current_text_index = my_font.render('Cute Cat', False, (0, 0, 0))
+
+image_position = (screen_width // 2 - current_image.get_width() // 2, screen_height // 2 - current_image.get_height() // 2)
+
 class japanMap():
     images_japan = ["country images\japan\mfuji.png", 
         "country images\japan\sushi dai.png", 
@@ -26,6 +30,21 @@ class japanMap():
         "country images\japan\ichiran.png",
         "country images\japan\sensoji temple.png"
         ]
+    current_image = pygame.image.load(images_japan[current_image_index]).convert().convert_alpha()
+    current_image = pygame.transform.scale(current_image, [500, 500])
+    def next_image():
+        global current_image_index, current_image, images_japan
+        current_image_index = (current_image_index + 1) % len(images_japan)
+        current_image = pygame.image.load(images_japan[current_image_index]).convert().convert_alpha()
+        current_image = pygame.transform.scale(current_image, [500, 500])
+
+    def previous_image():
+        global current_image_index, current_image, current_text_index
+        current_image_index = (current_image_index - 1) % len(images_japan)
+        current_image = pygame.image.load(images_japan[current_image_index]).convert().convert_alpha()
+        current_image = pygame.transform.scale(current_image, [500, 500])
+        display_current_image()
+
 class canadaMap():
     images_canada = [
         "country images\canada\malo.png",
@@ -33,7 +52,7 @@ class canadaMap():
         "country images\canada\CN_tower.png",
         "country images\canada\Niagara Falls.png",
         "country images\canada\Poutineville.png",
-        "country images\canada\Stanley Park.png",
+        "country images\canada\Stanley Park.png"
         ]
 class usaMap():
     images_usa = [
@@ -84,50 +103,18 @@ class mexicoMap():
             "country images\mexico\Teotihuacan-022.jpg"
         ]
 
-images = ["country images/japan/mfuji.png", 
-          "country images/japan/sushi dai.png", 
-          "country images/japan/mtokyo tower.png",
-          "country images/japan/imperial palace.png",
-          "country images/japan/ichiran.png",
-          "country images/japan/sensoji temple.png"
-          ]
-
 image_data = [("Picture 1", (0, 0, 0)),   
               ("Picture 2", (255, 0, 0)),
               ("Picture 3", (0, 255, 0))]
 
 current_image_index = 0
-current_text_index = 0
 
-current_image = pygame.image.load(images[current_image_index]).convert().convert_alpha()
-current_image = pygame.transform.scale(current_image, [500, 500])
-current_text_index = my_font.render('Cute Cat', False, (0, 0, 0))
 
-image_position = (screen_width // 2 - current_image.get_width() // 2, screen_height // 2 - current_image.get_height() // 2)
 
 
 
 def display_current_image():
     screen.blit(current_image, image_position)
-
-
-def next_image():
-    global current_image_index, current_image, current_text_index
-    current_image_index = (current_image_index + 1) % len(images)
-    #current_text_index = (current_text_index + 1) % len(image_data)
-    current_image = pygame.image.load(images[current_image_index]).convert().convert_alpha()
-    current_image = pygame.transform.scale(current_image, [500, 500])
-    #current_text_index = my_font.render(image_data[current_text_index], False, image_data[current_text_index][1])
-    display_current_image()
-
-def previous_image():
-    global current_image_index, current_image, current_text_index
-    current_image_index = (current_image_index - 1) % len(images)
-    # current_text_index = (current_text_index - 1) % len(image_data)
-    current_image = pygame.image.load(images[current_image_index]).convert().convert_alpha()
-    current_image = pygame.transform.scale(current_image, [500, 500])
-    #current_text_index = my_font.render(image_data[current_text_index], False, image_data[current_text_index][1])
-    display_current_image()
 
 running = True
 
@@ -138,9 +125,9 @@ while running:
             running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                previous_image()
+                japanMap.previous_image()
             elif event.key == pygame.K_RIGHT:
-                next_image()
+                japanMap.next_image()
             elif event.key == pygame.K_ESCAPE:
                 running = False 
 
