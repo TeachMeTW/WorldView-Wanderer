@@ -1,6 +1,9 @@
 import pygame
 import sys
 from button import Button
+import os
+import re
+import PIL
 
 
 pygame.init()
@@ -18,6 +21,63 @@ SCREEN = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Wordview Wanderer")
 clock = pygame.time.Clock()
 running = True
+MUSIC_END = pygame.USEREVENT+1
+CURRENT_SONG = 'Main-Menu'
+CURRENT_LOC = 'Japan'
+
+class Playlist:
+    def __init__(self, dir):
+        self.songs = []
+        self.static_songs = []
+        for s in os.listdir(dir):
+            f = os.path.join(dir, s)
+            if os.path.isfile(f):
+                self.songs.append(f)
+                self.static_songs.append(f)
+                
+
+    def play(self):
+        if len(self.songs) > 0:
+            pygame.mixer.music.load(self.songs[0])
+            
+            global CURRENT_SONG
+            
+            title = (self.songs[0]).replace('assets', '')
+            title = title.replace('.wav', '')
+            title = re.sub('\/.*?\/','', title)
+            CURRENT_SONG = title
+        
+            self.songs.pop(0)
+            pygame.mixer.music.play()
+            pygame.mixer.music.set_endevent(MUSIC_END)
+        else:
+            for s in (self.static_songs):
+                self.songs.append(s)
+     
+         
+    def next_song(playlist):
+        pass
+    
+    def pause():
+        pygame.mixer.pause()
+    
+    def resume():
+        pygame.mixer.unpause()
+
+jp = Playlist('assets/Japan')
+usa = Playlist('assets/USA')
+fr = Playlist('assets/French')
+ca = Playlist('assets/Canada')
+mx = Playlist('assets/Mexico')
+kr = Playlist('assets/Korea')
+ity = Playlist('assets/Italy')
+ind = Playlist('assets/India')
+
+
+
+playlists = [jp,usa,fr, ca, mx, kr, ity, ind]
+
+
 
 def blurSurf(surface, amt):
     """
@@ -72,11 +132,17 @@ current_text_index = my_font.render('Cute Cat', False, (0, 0, 0))
 image_position = (screen_width // 2 - current_image.get_width() // 2, screen_height // 2 - current_image.get_height() // 2)
 
 
+
 def get_font(size, type): # Returns Press-Start-2P in the desired size
     if type == DBZ:
         return pygame.font.Font("assets/dbz.ttf", size)
     elif type == MC:
         return pygame.font.Font("assets/mc.otf", size)
+    
+def get_font_cjk(size): # Returns Press-Start-2P in the desired size
+    return pygame.font.Font("assets/cjk.ttf", size)
+
+
     
 def display_current_image():
     screen.blit(current_image, image_position)
@@ -127,19 +193,51 @@ def visit():
         pygame.display.flip()
 
 def startbackground():
-    bckgr = pygame.mixer.Sound('assets/jazz.wav')
-    pygame.mixer.Sound.play(bckgr)
+    #bckgr = pygame.mixer.Sound('assets/jazz.wav')
+    pygame.mixer.music.load('assets/jazz.wav')
+    pygame.mixer.music.play()
     
-def endbackground():
+def pause():
+    pygame.mixer.music.pause()
+    
+def resume():
+    pygame.mixer.music.unpause()
+    
+def change(dir):
     pygame.mixer.music.stop()
+    if dir == 'Japan':
+        jp.play()
+    if dir == 'French':
+        fr.play()
+    if dir == 'Canada':
+        ca.play()
+    if dir == 'India':
+        ind.play()
+    if dir == 'Korea':
+        kr.play()
+    if dir == 'Mexico':
+        mx.play()
+    if dir == 'Italy':
+        ity.play()
+    if dir == 'USA':
+        usa.play()
+    pass
+
+
 
 def main_menu():
     startbackground()
+    P=0
     I = 0
     Flip = True
     BG = pygame.image.load("assets/lake.jpg")
     BG = pygame.transform.scale(BG, WINDOW_SIZE)
     BG  = blurSurf(BG, 10)
+    
+    MUTE_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/volume.png'), (100,100)), pos=(50,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
+    TEST_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/mbut.png'), (100,100)), pos=(1100,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
+    
+    
     while True:
         
         # SCREEN.blit(BG, (0,0))
@@ -177,13 +275,30 @@ def main_menu():
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-        for button in [VISIT_BUTTON, QUIT_BUTTON]:
+        curr = f"NOW PLAYING: {CURRENT_SONG}"
+        w = get_font_cjk(40)
+        text = w.render(curr, True, 'white')
+        length = text.get_size()
+        
+        NOW_PLAYING = Button(image=pygame.transform.scale(pygame.image.load("assets/Quit Rect.png"), (1.1*length[0], 1.1*length[1]) ), pos=(640, 650), 
+            text_input=f"{curr}", font=get_font_cjk(40), base_color="#d7fcd4", hovering_color="White")
+
+
+
+
+
+
+        for button in [VISIT_BUTTON, QUIT_BUTTON, TEST_BUTTON, MUTE_BUTTON, NOW_PLAYING]:
             # if button is VISIT_BUTTON:
             #     color = "black"
             #     pygame.draw.rect(SCREEN, color, pygame.Rect(470, 365, 350, 60))
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
         
+        
+        
+        
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -194,6 +309,25 @@ def main_menu():
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
+                if MUTE_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    if P==0:
+                        MUTE_BUTTON.image = pygame.transform.scale(pygame.image.load('assets/muted.png'),(100,100))
+                        MUTE_BUTTON.update(SCREEN)
+                        pause()
+                        P=1
+                    else:
+                        MUTE_BUTTON.image = pygame.transform.scale(pygame.image.load('assets/volume.png'),(100,100))
+                        MUTE_BUTTON.update(SCREEN)
+                        resume()
+                        P=0
+                if TEST_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    change(CURRENT_LOC)
+                    
+                    
+            for p in playlists:
+                    if event.type == MUSIC_END and len(p.songs) == 0:
+                        p.play()
+
 
         pygame.display.update()
 
