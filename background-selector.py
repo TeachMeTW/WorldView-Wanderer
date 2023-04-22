@@ -60,18 +60,18 @@ class usaMap():
         "countryimages\usa\gateway.png",
         "countryimages\usa\in out.png",
         "countryimages\usa\katz.png",
-        "countryimages\usa\rushmore.png",
+        "countryimages\usa\\rushmore.png",
         "countryimages\usa\yellowstone.png",
         ]
 
 class franceMap():
     images_france = [
-        "countryimages\france\arc de trimophe.png",
-        "countryimages\france\comptoir.png",
-        "countryimages\france\eiffel.png",
-        "countryimages\france\notre dame.png",
-        "countryimages\france\tour.png",
-        "countryimages\france\versailles.png"  
+        "countryimages\\france\\arc de trimophe.png",
+        "countryimages\\france\comptoir.png",
+        "countryimages\\france\eiffel.png",
+        "countryimages\\france\\notre dame.png",
+        "countryimages\\france\\tour.png",
+        "countryimages\\france\\versailles.png"  
         ]
 
 class italyMap(): 
@@ -90,7 +90,7 @@ class koreaMap():
         "countryimages\korea\gwangjang.png",
         "countrymages\korea\jeju.png",
         "countryimages\korea\kyoja.png",
-        "countryimages\korea\namsan.png",
+        "countryimages\korea\\namsan.png",
         "countryimages\korea\palace.png"
         ]
 class mexicoMap(): 
