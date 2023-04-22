@@ -79,7 +79,7 @@ list1 = DropDown(
     [COLOR_LIST_INACTIVE, COLOR_LIST_ACTIVE],
     30, 30, 200, 40, 
     font,
-    "Select Country", ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "South Korea","USA"])
+    "Select Destination", ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "South Korea","USA"])
 
 #timezone dictionary 
 timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9, 
@@ -99,7 +99,7 @@ while run:
     selected_option = list1.update(event_list)
 
     if str(selected_option) != '-1':
-        list1.main = 'Select Country' 
+        list1.main = 'Select Destination' 
         temp = selected_option   
     else:
         list1.draw(screen)
