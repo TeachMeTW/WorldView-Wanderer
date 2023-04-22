@@ -66,9 +66,7 @@ while running:
     display_current_image()
     screen.blit(left_selector, dest=(400, 540))
     screen.blit(right_selector, dest = (1400, 540))
-    
-    
-    screen.blit(text_surface, dest=(0, 0))
+    screen.blit(text_surface, dest=(900, 800))
     pygame.display.flip()
 
 pygame.quit()
