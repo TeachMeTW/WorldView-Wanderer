@@ -1,5 +1,6 @@
 import pygame as pg
 import random
+import datetime
 
 class DropDown():
 
@@ -51,13 +52,22 @@ class DropDown():
                 elif self.draw_menu and self.active_option >= 0:
                     self.draw_menu = False
                     return self.display_options[self.active_option]
-        return '-1'
+        return -1
+
+def render_pst_clock(font, st):
+    pst = datetime.timezone(datetime.timedelta(hours= st))
+    now = datetime.datetime.now(pst)
+    time_str = now.strftime('%I:%M:%S %p')
+    time_surface = font.render(time_str, True, (0, 0, 0))
+    return time_surface
 
 pg.init()
 clock = pg.time.Clock()
-screen = pg.display.set_mode((1080, 860))
 
+window_size = (1280, 720)
+screen = pg.display.set_mode(window_size)
 
+font = pg.font.Font("assets/font.ttf", 40)
 
 COLOR_ACTIVE = (148, 208, 242)
 COLOR_INACTIVE = (16, 109, 163)
@@ -67,11 +77,16 @@ COLOR_LIST_ACTIVE = (37, 94, 150)
 list1 = DropDown(
     [COLOR_INACTIVE, COLOR_ACTIVE],
     [COLOR_LIST_INACTIVE, COLOR_LIST_ACTIVE],
-    150, 50, 200, 40, 
-    pg.font.Font("assets/font.ttf", 40),
-    "Select Country", ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Korea", "Mexico", "USA"])
+    5, 5, 200, 40, 
+    font,
+    "Select Country", ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "South Korea","USA"])
 
+#timezone dictionary 
+timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9, 
+                 "India":12.5, "Italy":9, "Japan":16, "Mexico":1, 
+                 "South Korea":16, "USA":3}
 run = True
+temp = 0
 while run:
     clock.tick(30)
 
@@ -80,12 +95,28 @@ while run:
         if event.type == pg.QUIT:
             run = False
 
+    
     selected_option = list1.update(event_list)
-    if selected_option != '-1':
-        print(selected_option)
-        list1.main = 'Select Country'
+    print(selected_option)
+
+    if str(selected_option) != '-1':
+        list1.main = 'Select Country' 
+        temp = selected_option   
+    else:
+        list1.draw(screen)
+        pg.display.flip()
+        
+        #continue
+
 
     screen.fill((255, 255, 255))
+    clock_surface = render_pst_clock(font, -7+(timezone_dict[temp]))
+    screen.blit(clock_surface, (screen.get_width() - clock_surface.get_width() - 15, 15))
+
+    #else:
+    #screen.blit(render_pst_clock(font, -7), (screen.get_width() - clock_surface.get_width() - 15, 15))
+
+
     list1.draw(screen)
     pg.display.flip()
     
