@@ -4,6 +4,7 @@ from button import Button
 
 
 pygame.init()
+pygame.mixer.init()
 
 SCREEN = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Wordview Wanderer")
@@ -18,8 +19,17 @@ def get_font(size): # Returns Press-Start-2P in the desired size
 def search():
     return
 
+def startbackground():
+    bckgr = pygame.mixer.Sound('assets/jazz.wav')
+    pygame.mixer.Sound.play(bckgr)
+    
+def endbackground():
+    pygame.mixer.music.stop()
+
 def main_menu():
+    startbackground()
     while True:
+        
         SCREEN.blit(BG, (0,0))
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
