@@ -17,13 +17,17 @@ right_selector = pygame.image.load("KTjAXb7Tq-2709733076.png").convert_alpha()
 left_selector = pygame.transform.scale(left_selector, [selector_width, selector_height])
 right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
 
-images = ["360a8e769faff209fe61b202712f59a4-2540459211.png", 
-          "cat-10-e1573844975155-1818957124.png", 
-          "download.jpg"]
+images = ["country images\japan\mfuji.png", 
+          "country images\japan\sushi dai.png", 
+          "country images\japan\mtokyo tower.png",
+          "country images\japan\imperial palace.png",
+          "country images\japan\ichiran.png",
+          "country images\japan\sensoji temple.png"
+          ]
 
-image_data = [("Cute Cat", (0, 0, 0)),   
-              ("Sleepy Cat", (255, 0, 0)),
-              ("Funny Cat", (0, 255, 0))]
+image_data = [("Picture 1", (0, 0, 0)),   
+              ("Picture 2", (255, 0, 0)),
+              ("Picture 3", (0, 255, 0))]
 
 current_image_index = 0
 current_text_index = 0
@@ -43,10 +47,10 @@ def display_current_image():
 def next_image():
     global current_image_index, current_image, current_text_index
     current_image_index = (current_image_index + 1) % len(images)
-    # current_text_index = (current_text_index + 1) % len(image_data)
+    #current_text_index = (current_text_index + 1) % len(image_data)
     current_image = pygame.image.load(images[current_image_index]).convert().convert_alpha()
     current_image = pygame.transform.scale(current_image, [500, 500])
-    # current_text_index = my_font.render(image_data[current_text_index][0], False, image_data[current_text_index][1])
+    #current_text_index = my_font.render(image_data[current_text_index], False, image_data[current_text_index][1])
     display_current_image()
 
 def previous_image():
@@ -55,7 +59,7 @@ def previous_image():
     # current_text_index = (current_text_index - 1) % len(image_data)
     current_image = pygame.image.load(images[current_image_index]).convert().convert_alpha()
     current_image = pygame.transform.scale(current_image, [500, 500])
-    # current_text_index = my_font.render(image_data[current_text_index][0], False, image_data[current_text_index][1])
+    #current_text_index = my_font.render(image_data[current_text_index], False, image_data[current_text_index][1])
     display_current_image()
 
 running = True
