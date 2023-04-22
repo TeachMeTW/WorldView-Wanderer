@@ -33,7 +33,7 @@ class canadaMap():
         "country images\canada\CN_tower.png",
         "country images\canada\Niagara Falls.png",
         "country images\canada\Poutineville.png",
-        "country images\canada\Stanley Park.png",
+        "country images\canada\Stanley Park.png"
         ]
 class usaMap():
     images_usa = [
