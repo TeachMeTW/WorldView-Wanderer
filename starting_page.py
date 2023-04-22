@@ -4,7 +4,8 @@ from button import Button
 import os
 import re
 import PIL
-
+import random
+from background_selector import makeCountry, CountryMap
 
 pygame.init()
 pygame.mixer.init()
@@ -80,10 +81,6 @@ playlists = [jp,usa,fr]
 
 
 def blurSurf(surface, amt):
-    """
-    Blur the given surface by the given 'amount'.  Only values 1 and greater
-    are valid.  Value 1 = no blur.
-    """
     if amt < 1.0:
         raise ValueError("Arg 'amt' must be greater than 1.0, passed in value is %s"%amt)
     scale = 1.0/float(amt)
@@ -166,8 +163,8 @@ def previous_image():
     #current_text_index = my_font.render(image_data[current_text_index], False, image_data[current_text_index][1])
     display_current_image()
 
-def visit():
-    pygame.display.set_caption("Image Selector")
+def visit(country_map):
+    pygame.display.set_caption("Country Map")
 
     running = True
 
@@ -179,16 +176,16 @@ def visit():
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    previous_image()
+                    country_map.left()
                 elif event.key == pygame.K_RIGHT:
-                    next_image()
+                    country_map.right()
                 elif event.key == pygame.K_ESCAPE:
                     running = False 
 
         screen.fill((255, 255, 255))
-        display_current_image()
-        screen.blit(left_selector, dest=(400, 540))
-        screen.blit(right_selector, dest = (1400, 540))
+        country_map.display()
+        screen.blit(left_selector, dest=(200, 540))
+        screen.blit(right_selector, dest = (1000, 540))
         # screen.blit(current_text_index, dest=(900, 800))
         pygame.display.flip()
 
@@ -245,21 +242,8 @@ def main_menu():
         SCREEN.blit(BG,(I,0))
         flipBG = pygame.transform.flip(BG, True, False)
         SCREEN.blit(flipBG,(WIDTH + I,0))
-        print("being hit")
-        print(I)
-        print(WIDTH)
         if (I==-WIDTH):
-            print("HIT HIT HIT")
-            # if Flip:
-            #     BG = pygame.transform.flip(BG, True, False)
-            #     SCREEN.blit(BG,(WIDTH+I,0))
-            #     Flip = False
-            # else:
-            #     BG = pygame.transform.flip(BG, True, False)
-            #     SCREEN.blit(BG,(WIDTH+I,0))
-            #     Flip = True
             SCREEN.blit(BG,(I,0))
-           
             I=0
         I-=1
 
@@ -284,10 +268,6 @@ def main_menu():
             text_input=f"{curr}", font=get_font_cjk(40), base_color="#d7fcd4", hovering_color="White")
 
 
-
-
-
-
         for button in [VISIT_BUTTON, QUIT_BUTTON, TEST_BUTTON, MUTE_BUTTON, NOW_PLAYING]:
             # if button is VISIT_BUTTON:
             #     color = "black"
@@ -296,16 +276,15 @@ def main_menu():
             button.update(SCREEN)
         
         
-        
-        
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if VISIT_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    visit()
+                    country_index = random.randint(0,7)
+                    country_map = makeCountry(country_index)
+                    visit(country_map)
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()

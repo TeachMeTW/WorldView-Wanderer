@@ -7,38 +7,17 @@ selector_height = 100
 screen_width = 1920
 screen_height = 1080
 
-pygame.init()
-
+# pygame.init()
+current_image_index = 0
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Image Selector")
+# pygame.display.set_caption("Image Selector")
 
-left_selector = pygame.image.load("left-arrow-png-left-icon-1600-2971489872.png").convert_alpha()
-right_selector = pygame.image.load("KTjAXb7Tq-2709733076.png").convert_alpha()
+# left_selector = pygame.image.load("left-arrow-png-left-icon-1600-2971489872.png").convert_alpha()
+# right_selector = pygame.image.load("KTjAXb7Tq-2709733076.png").convert_alpha()
 
-left_selector = pygame.transform.scale(left_selector, [selector_width, selector_height])
-right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
+# left_selector = pygame.transform.scale(left_selector, [selector_width, selector_height])
+# right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
 
-class CountryMap():
-    index = 0
-    img = []
-    def __init__(self, image_list):
-
-        for i in image_list:
-            self.img.append(i)
-        self.index = 0
-    def left(self):
-        self.index+=1
-        current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
-        screen.blit(current_image, (100,100))
-    def right(self):
-        self.index -= 1
-        current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
-        screen.blit(current_image, (100, 100))
-
-    def display(self):
-        current_image = pygame.image.load(self.img[self.index])
-        screen.blit(current_image, (100,100))
-    
 canada_images = [
             "countryimages/canada/malo.png",
             "countryimages/canada/Chateau_Frotenac.png",
@@ -46,7 +25,7 @@ canada_images = [
             "countryimages/canada/Niagara Falls.png",
             "countryimages/canada/Poutineville.png",
             "countryimages/canada/Stanley Park.png",
-    ]
+        ]
 images_usa = [
     "countryimages/usa/GGB.png",
     "countryimages/usa/gateway.png",
@@ -110,38 +89,66 @@ india_images = ["countryimages/india/bukhara.png",
                 "countryimages/india/red fort.png",
                 "countryimages/india/taj mahal.png"]
 
+def makeCountry(country_index):
+    country_dict = {0: canada_images, 1: images_usa, 2: images_france, 3: images_italy, 4: images_korea, 5: images_mexico, 6: japan_images, 7: india_images}
+    chosen_country = country_dict[country_index]
+    countryMap = CountryMap(chosen_country)
+    return countryMap
+
+class CountryMap():
+    index = 0
+    img = []
+    def __init__(self, image_list):
+
+        for i in image_list:
+            self.img.append(i)
+        self.index = 0
+    def left(self):
+        self.index+=1
+        current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
+        screen.blit(current_image, (100,100))
+    def right(self):
+        self.index -= 1
+        current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
+        screen.blit(current_image, (100, 100))
+
+    def display(self):
+        current_image = pygame.image.load(self.img[self.index])
+        screen.blit(current_image, (100,100))
+    
+
+
+
 image_data = [("Picture 1", (0, 0, 0)),   
               ("Picture 2", (255, 0, 0)),
               ("Picture 3", (0, 255, 0))]
 
 
-canmap = CountryMap(canada_images)
-# usmap = CountryMap(images_usa)
-# frmap = CountryMap(images_france)
-# itmap = CountryMap(images_italy)
-# kormap = CountryMap(images_korea)
-# mexmap = CountryMap(images_mexico)
-# japanmap = CountryMap(japan_images)
-# indiamap = CountryMap(india_images)
+# canmap = CountryMap(canada_images)
 
 
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                canmap.left()
-            elif event.key == pygame.K_RIGHT:
-                canmap.right()
-            elif event.key == pygame.K_ESCAPE:
-                running = False 
 
-    screen.fill((255, 255, 255))
-    canmap.display()
-    screen.blit(left_selector, dest=(400, 540))
-    screen.blit(right_selector, dest = (1400, 540))
-    pygame.display.flip()
 
-pygame.quit()
+# running = True
+
+
+# while running:
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             running = False
+#         elif event.type == pygame.KEYDOWN:
+#             if event.key == pygame.K_LEFT:
+#                 canmap.left()
+#             elif event.key == pygame.K_RIGHT:
+#                 canmap.right()
+#             elif event.key == pygame.K_ESCAPE:
+#                 running = False 
+
+#     screen.fill((255, 255, 255))
+#     canmap.display()
+#     screen.blit(left_selector, dest=(400, 540))
+#     screen.blit(right_selector, dest = (1400, 540))
+#     # screen.blit(current_text_index, dest=(900, 800))
+#     pygame.display.flip()
+
+# pygame.quit()
