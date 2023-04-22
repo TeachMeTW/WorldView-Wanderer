@@ -23,7 +23,7 @@ current_text_index = my_font.render('Cute Cat', False, (0, 0, 0))
 image_position = (screen_width // 2 - current_image.get_width() // 2, screen_height // 2 - current_image.get_height() // 2)
 
 class japanMap():
-    images_japan = ["country images\japan\mfuji.png", 
+    images_japan = ["countryimages\japan\mfuji.png", 
         "countryimages\japan\sushi dai.png", 
         "countryimages\japan\mtokyo tower.png",
         "countryimages\japan\imperial palace.png",
