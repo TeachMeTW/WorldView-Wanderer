@@ -20,76 +20,76 @@ right_selector = pygame.transform.scale(right_selector, [selector_width, selecto
 
 class japanMap():
     images_japan = ["country images\japan\mfuji.png", 
-        "country images\japan\sushi dai.png", 
-        "country images\japan\mtokyo tower.png",
-        "country images\japan\imperial palace.png",
-        "country images\japan\ichiran.png",
-        "country images\japan\sensoji temple.png"
+        "countryimages\japan\sushi dai.png", 
+        "countryimages\japan\mtokyo tower.png",
+        "countryimages\japan\imperial palace.png",
+        "countryimages\japan\ichiran.png",
+        "countryimages\japan\sensoji temple.png"
         ]
 class canadaMap():
     images_canada = [
-        "country images\canada\malo.png",
-        "country images\canada\Chateau_Frotenac.png",
-        "country images\canada\CN_tower.png",
-        "country images\canada\Niagara Falls.png",
-        "country images\canada\Poutineville.png",
-        "country images\canada\Stanley Park.png",
+        "countryimages\canada\malo.png",
+        "countryimages\canada\Chateau_Frotenac.png",
+        "countryimages\canada\CN_tower.png",
+        "countryimages\canada\Niagara Falls.png",
+        "countryimages\canada\Poutineville.png",
+        "countryimages\canada\Stanley Park.png",
         ]
 class usaMap():
     images_usa = [
-        "country images\usa\GGB.png",
-        "country images\usa\gateway.png",
-        "country images\usa\in out.png",
-        "country images\usa\katz.png",
-        "country images\usa\rushmore.png",
-        "country images\usa\yellowstone.png",
+        "countryimages\usa\GGB.png",
+        "countryimages\usa\gateway.png",
+        "countryimages\usa\in out.png",
+        "countryimages\usa\katz.png",
+        "countryimages\usa\rushmore.png",
+        "countryimages\usa\yellowstone.png",
         ]
 
 class franceMap():
     images_france = [
-        "country images\france\arc de trimophe.png",
-        "country images\france\comptoir.png",
-        "country images\france\eiffel.png",
-        "country images\france\notre dame.png",
-        "country images\france\tour.png",
-        "country images\france\versailles.png"  
+        "countryimages\france\arc de trimophe.png",
+        "countryimages\france\comptoir.png",
+        "countryimages\france\eiffel.png",
+        "countryimages\france\notre dame.png",
+        "countryimages\france\tour.png",
+        "countryimages\france\versailles.png"  
         ]
 
 class italyMap(): 
     images_italy = [
-        "country images\italy\coloseeum.png",
-        "country images\italy\duomo.png",
-        "country images\italy\enzo.png",
-        "country images\italy\Osteria.png",
-        "country images\italy\pisa.png"
-        "country images\italy\cinque.png"
+        "countryimages\italy\coloseeum.png",
+        "countryimages\italy\duomo.png",
+        "countryimages\italy\enzo.png",
+        "countryimages\italy\Osteria.png",
+        "countryimages\italy\pisa.png"
+        "countryimages\italy\cinque.png"
     ]
 
 class koreaMap():
     images_korea = [
-        "country images\korea\gwanghwaum.png",
-        "country images\korea\gwangjang.png",
-        "country images\korea\jeju.png",
-        "country images\korea\kyoja.png",
-        "country images\korea\namsan.png",
-        "country images\korea\palace.png"
+        "countryimages\korea\gwanghwaum.png",
+        "countryimages\korea\gwangjang.png",
+        "countrymages\korea\jeju.png",
+        "countryimages\korea\kyoja.png",
+        "countryimages\korea\namsan.png",
+        "countryimages\korea\palace.png"
         ]
 class mexicoMap(): 
         images_mexico = [
-            "country images\mexico\Cancun.png",
-            "country images\mexico\Chichen Itza.png",
-            "country images\mexico\La-Carnita.png",
-            "country images\mexico\Palacio-De-Bellas-Artes.png",
-            "country images\mexico\Pujol.png",
-            "country images\mexico\Teotihuacan-022.jpg"
+            "countryimages\mexico\Cancun.png",
+            "countryimages\mexico\Chichen Itza.png",
+            "countryimages\mexico\La-Carnita.png",
+            "countryimages\mexico\Palacio-De-Bellas-Artes.png",
+            "countryimages\mexico\Pujol.png",
+            "countryimages\mexico\Teotihuacan-022.jpg"
         ]
 
-images = ["country images/japan/mfuji.png", 
-          "country images/japan/sushi dai.png", 
-          "country images/japan/mtokyo tower.png",
-          "country images/japan/imperial palace.png",
+images = ["countryimages/japan/mfuji.png", 
+          "countryimages/japan/sushi dai.png", 
+          "countryimages/japan/mtokyo tower.png",
+          "countryimages/japan/imperial palace.png",
           "country images/japan/ichiran.png",
-          "country images/japan/sensoji temple.png"
+          "countryimages/japan/sensoji temple.png"
           ]
 
 image_data = [("Picture 1", (0, 0, 0)),   
