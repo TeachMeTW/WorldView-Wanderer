@@ -76,7 +76,7 @@ clock = pg.time.Clock()
 
 window_size = (1280, 720)
 screen = pg.display.set_mode(window_size)
-font = pg.font.Font("assets/font.ttf", 50)
+font = pg.font.Font("assets/font.ttf", 45)
 font_date = pg.font.Font("assets/font.ttf", 40)
 
 COLOR_ACTIVE = (148, 208, 242)
@@ -97,7 +97,7 @@ timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9,
                  "South Korea":16, "USA":3}
 
 date_timezone_dict={0:"America/Los_Angeles","Japan":"Asia/Tokyo", "India":"Asia/Calcutta", "China":"Asia/Chongqing", "France":"Europe/Paris", "Germany":"Europe/Paris", 
-                    "Italy":"Europe/Paris", "Japan":"Asia/Tokyo", "Mexico":"America/Mexico_City", "South Korea":"Asia/Seoul", "USA":"America/Fort_Wayne"}
+                    "Italy":"Europe/Paris", "Canada":"Canada/Atlantic", "Mexico":"America/Mexico_City", "South Korea":"Asia/Seoul", "USA":"America/Fort_Wayne"}
 run = True
 temp = 0
 while run:
