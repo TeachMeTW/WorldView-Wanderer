@@ -78,12 +78,7 @@ list1 = DropDown(
     [COLOR_LIST_INACTIVE, COLOR_LIST_ACTIVE],
     30, 30, 200, 40, 
     font,
-<<<<<<< HEAD
-    "Select Destination", 
-    ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "South Korea","USA"])
-=======
     "Select Destination", ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "South Korea","USA"])
->>>>>>> 93fbbca2f8e1f8e892ecdb6070bc16cbf17262b2
 
 #timezone dictionary 
 timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9, 
@@ -103,13 +98,8 @@ while run:
     selected_option = list1.update(event_list)
 
     if str(selected_option) != '-1':
-<<<<<<< HEAD
-        list1.main = "Select Destination"
-        temp = selected_option
-=======
         list1.main = 'Select Destination' 
         temp = selected_option   
->>>>>>> 93fbbca2f8e1f8e892ecdb6070bc16cbf17262b2
     else:
         list1.draw(screen)
         pg.display.flip()
