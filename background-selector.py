@@ -84,6 +84,14 @@ class mexicoMap():
             "country images\mexico\Teotihuacan-022.jpg"
         ]
 
+images = ["country images/japan/mfuji.png", 
+          "country images/japan/sushi dai.png", 
+          "country images/japan/mtokyo tower.png",
+          "country images/japan/imperial palace.png",
+          "country images/japan/ichiran.png",
+          "country images/japan/sensoji temple.png"
+          ]
+
 image_data = [("Picture 1", (0, 0, 0)),   
               ("Picture 2", (255, 0, 0)),
               ("Picture 3", (0, 255, 0))]
@@ -122,6 +130,8 @@ def previous_image():
     display_current_image()
 
 running = True
+
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
