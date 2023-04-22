@@ -10,7 +10,9 @@ pygame.display.set_caption("Wordview Wanderer")
 clock = pygame.time.Clock()
 running = True
 
+WINDOW_SIZE = (1280, 720)
 BG = pygame.image.load("assets/country_road.jpg")
+BG = pygame.transform.scale(BG, WINDOW_SIZE)
 DBZ = 0
 MC = 1
 
@@ -29,7 +31,7 @@ def main_menu():
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
-        MENU_TEXT = get_font(100, DBZ).render("Worldview Wanderer", True, "#b68f40")
+        MENU_TEXT = get_font(100, DBZ).render("Worldview Wanderer", True, "#c6e2ff")
         MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
 
         VISIT_BUTTON = Button(image=pygame.image.load("assets/blue_rect.png"), pos=(640, 400), 

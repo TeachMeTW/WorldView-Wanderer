@@ -33,14 +33,8 @@ class Button():
 		return False
 
 	def changeColor(self, position, scale = None):
-		if scale is None:
-		    if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
-			    self.text = self.font.render(self.text_input, True, self.hovering_color)
-		    else:
-			    self.text = self.font.render(self.text_input, True, self.base_color)
-	
-		# else:
-        #     if position[0] in range(self.rect.left * scale, self.rect.right * scale) and position[1] in range(self.rect.top * scale, self.rect.bottom * scale):
-		# 	    self.text = self.font.render(self.text_input, True, self.hovering_color)
-		# 	else:
-        #         self.text = self.font.render(self.text_input, True, self.base_color)
+		
+		if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
+			self.text = self.font.render(self.text_input, True, self.hovering_color)
+		else:
+			self.text = self.front.render(self.text_input, True, self.base_color)
