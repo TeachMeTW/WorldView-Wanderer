@@ -97,7 +97,6 @@ while run:
 
     
     selected_option = list1.update(event_list)
-    print(selected_option)
 
     if str(selected_option) != '-1':
         list1.main = 'Select Country' 
