@@ -1,8 +1,8 @@
 import pygame
 pygame.font.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 30)
-selector_width = 50
-selector_height = 50
+selector_width = 100
+selector_height = 100
 screen_width = 1920
 screen_height = 1080
 
@@ -64,8 +64,8 @@ while running:
 
         screen.fill((255, 255, 255))
     display_current_image()
-    screen.blit(left_selector, dest=(520, 140))
-    screen.blit(right_selector, dest = (1440, 140))
+    screen.blit(left_selector, dest=(400, 540))
+    screen.blit(right_selector, dest = (1400, 540))
     
     
     screen.blit(text_surface, dest=(0, 0))
