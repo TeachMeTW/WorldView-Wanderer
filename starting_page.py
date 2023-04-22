@@ -109,6 +109,8 @@ def visit():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+                pygame.quit()
+                sys.exit()
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     previous_image()
@@ -123,11 +125,6 @@ def visit():
         screen.blit(right_selector, dest = (1400, 540))
         # screen.blit(current_text_index, dest=(900, 800))
         pygame.display.flip()
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
 
 def startbackground():
     bckgr = pygame.mixer.Sound('assets/jazz.wav')
