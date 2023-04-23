@@ -5,7 +5,7 @@ import os
 import re
 import PIL
 import random
-from background_selector import makeCountry, CountryMap
+from background_selector import makeCountry, get_country_name, food_images, CountryMap
 from drop_down import *
 
 
@@ -112,8 +112,10 @@ def visit(country_map, country):
     country_dict = {0: "usa", 1: "canada", 2: "china", 3: "france", 4: "india", 5: "italy", 6: "japan", 7: "korea", 8: "mexico"}
     country_dict2 = { country_dict[k]:k for k in country_dict}
     
-    
-
+    MENU_MOUSE_POS = pygame.mouse.get_pos()
+    FOOD_BUTTON = Button(image = None, pos=(1100, 600), 
+        text_input="Cuisine of this Country", font=get_font(30, MC), base_color="black", hovering_color="blue", scale = .2)
+   
     clock = pg.time.Clock()
 
     window_size = (1280, 720)
@@ -174,12 +176,14 @@ def visit(country_map, country):
     screen.blit(right_selector, dest = (1000, 540))
     #country_map.display()
     #print(country_map.img)
-    
+    food_counter = 0
+    valid_dish = None
     while running:
         img = country_map.display()
         screen.fill((255, 255, 255))
         screen.blit(img,(400, 60))
-        
+        if valid_dish is not None:
+            screen.blit(valid_dish, (1000, 300))
         MENU_MOUSE_POS = pygame.mouse.get_pos()
         curr = f"NOW PLAYING: {CURRENT_SONG}"
         w = get_font_cjk(40)
@@ -192,7 +196,7 @@ def visit(country_map, country):
    
         
         #pygame.display.update()
-        for button in [TEST_BUTTON, MUTE_BUTTON, NOW_PLAYING]:
+        for button in [TEST_BUTTON, MUTE_BUTTON, NOW_PLAYING, FOOD_BUTTON]:
             # if button is VISIT_BUTTON:
             #     color = "black"
             #     pygame.draw.rect(SCREEN, color, pygame.Rect(470, 365, 350, 60))
@@ -238,6 +242,9 @@ def visit(country_map, country):
             
             if event.type == pygame.QUIT:
                 running = False
+                pygame.quit()
+                sys.exit()
+                
                 
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
@@ -262,8 +269,17 @@ def visit(country_map, country):
                         resume()
                         P=0
                 if TEST_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    
                     change(CURRENT_LOC)
+                if FOOD_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    food_pics = food_images(country)
+                    current_dish = pygame.image.load(food_pics[food_counter]).convert_alpha()
+                    current_dish = pygame.transform.scale(current_dish, [250, 250])
+                    valid_dish = current_dish
+                    #screen.blit(current_dish, dest = (1000, 300))
+                    if food_counter == len(food_pics) - 1:
+                        food_counter = 0
+                    else:
+                        food_counter += 1
                 #pygame.display.update()
                     
                     
@@ -295,21 +311,21 @@ def resume():
     
 def change(dir):
     pygame.mixer.music.stop()
-    if dir == 'Japan':
+    if dir == 'japan':
         jp.play()
-    if dir == 'France':
+    if dir == 'france':
         fr.play()
-    if dir == 'Canada':
+    if dir == 'canada':
         ca.play()
-    if dir == 'India':
+    if dir == 'india':
         ind.play()
-    if dir == 'Korea':
+    if dir == 'korea':
         kr.play()
-    if dir == 'Mexico':
+    if dir == 'mexico':
         mx.play()
-    if dir == 'Italy':
+    if dir == 'italy':
         ity.play()
-    if dir == 'USA':
+    if dir == 'usa':
         usa.play()
     pass
 
