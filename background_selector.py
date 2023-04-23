@@ -89,7 +89,7 @@ china_images = ["countryimages//China//forbidden_city.png",
                 "countryimages//China//quanjude.png",
                 "countryimages//China//south_beauty.png",
                 "countryimages//China//summer_palace.png"]
-                ]
+                
 american_food_images = ["food/american_food/lobster_rolls.jpg",
                         "food/american_food/ny_pizza.jpg",
                         "food/american_food/philly.jpg",
@@ -148,7 +148,7 @@ mexican_food_images = ["food/mexican_food/birri_taco.jpg",
 
 
 def food_images(country_name):
-    country_dict = {"usa": american_food_images, "canada": canadian_food_images, "china": chinese_food_images, "france": french_food_images, "india": indian_food_images, "italy": italian_food_images,
+    country_dict = {"usa": american_food_images, "canada": canada_data, "china": chinese_food_images, "france": french_food_images, "india": indian_food_images, "italy": italian_food_images,
                     "japan": japanese_food_images, "korea": korean_food_images, "mexico": mexican_food_images}
     return country_dict[country_name]
 
@@ -161,6 +161,14 @@ def makeCountry(country_index):
     chosen_country = country_dict[country_index]
     countryMap = CountryMap(chosen_country)
     return countryMap
+
+def get_text(country, index):
+    country_dict = {"usa": american_food_images, "canada": canadian_food_images, "china": chinese_food_images, "france": french_food_images, "india": indian_food_images, "italy": italian_food_images,
+                    "japan": japanese_food_images, "korea": korean_food_images, "mexico": mexican_food_images}
+    current_country = country_dict[country]
+    current_text = current_country[index]
+    return
+    
 
 class CountryMap():
     index = 0
@@ -190,6 +198,9 @@ class CountryMap():
         image_rect = current_image.get_rect()    
         image_rect.center = (screen_width/2, screen_height/2)
         return current_image
+    
+    def get_index(self):
+        return self.index
 
 
 

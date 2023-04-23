@@ -5,7 +5,7 @@ import os
 import re
 import PIL
 import random
-from background_selector import makeCountry, get_country_name, food_images, CountryMap
+from background_selector import makeCountry, get_country_name, food_images, get_text, CountryMap
 from drop_down import *
 
 
@@ -178,11 +178,12 @@ def visit(country_map, country):
     #print(country_map.img)
     food_counter = 0
     valid_dish = None
-    valid_text = 0
     while running:
         img = country_map.display()
         screen.fill((255, 255, 255))
         screen.blit(img,(400, 60))
+        current_text = get_text(country, country_map.get_index())
+        TEXT_BUTTON = Button(image=None, pos=(500,600),  text_input=current_text, font=get_font(50, MC), base_color="black", hovering_color="black")
         if valid_dish is not None:
             screen.blit(valid_dish, (30, 200))
 
@@ -199,7 +200,7 @@ def visit(country_map, country):
    
         
         #pygame.display.update()
-        for button in [TEST_BUTTON, MUTE_BUTTON, NOW_PLAYING, FOOD_BUTTON]:
+        for button in [TEST_BUTTON, MUTE_BUTTON, NOW_PLAYING, FOOD_BUTTON, TEXT_BUTTON]:
             # if button is VISIT_BUTTON:
             #     color = "black"
             #     pygame.draw.rect(SCREEN, color, pygame.Rect(470, 365, 350, 60))
