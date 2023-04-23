@@ -105,30 +105,27 @@ class CountryMap():
 
         for i in image_list:
             self.img.append(i)
-        # for x in data_list:
-        #     self.data.append(i)
+       
         self.index = 0
 
     def left(self):
         if self.index < len(self.img)-1:
             self.index+=1
             current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
-            #screen.blit(current_image, (100,100))
-        #return current_image
+            
     def right(self):
         if self.index > 0:
             self.index -= 1
             current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
-            #screen.blit(current_image, (100, 100))
-        #return current_image
+            
 
     def display(self):
         current_image = pygame.image.load(self.img[self.index])
         current_image = pygame.transform.scale(current_image, (500,500))
         image_rect = current_image.get_rect()    
-        image_rect.center = (960, 540)
-        #screen.blit(current_image, (400, 150))
+        image_rect.center = (screen_width/2, screen_height/2)
         return current_image
+
 
 
 

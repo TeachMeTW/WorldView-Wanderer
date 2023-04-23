@@ -178,7 +178,7 @@ def visit(country_map, country):
     while running:
         img = country_map.display()
         screen.fill((255, 255, 255))
-        screen.blit(img,(100,100))
+        screen.blit(img,(400, 60))
         
         MENU_MOUSE_POS = pygame.mouse.get_pos()
         curr = f"NOW PLAYING: {CURRENT_SONG}"
