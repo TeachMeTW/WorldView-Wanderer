@@ -31,11 +31,10 @@ canada_data = [
 ]
 
 images_usa = [
-    "countryimages/usa/GGB.png",
-    "countryimages/usa/gateway.png",
-    "countryimages/usa/in out.png",
-    "countryimages/usa/katz.png",
-    "countryimages/usa/rushmore.png",
+    "countryimages/usa/borgor.png",
+    "countryimages/usa/goldengate.png",
+    "countryimages/usa/observatory.png",
+    "countryimages/usa/sf.png",
     "countryimages/usa/yellowstone.png",
     ]
 
@@ -85,7 +84,13 @@ images_korea = [
     ]
 
 korea_data = [
-    ""]
+    "Gwangjang Market",
+    "Jeju Island",
+    "Myeongdong Kyoja"
+    "Gwanghwamun"
+    "Dol Hareubang"
+    "Gyeongbokgung Palace",
+]
 images_mexico = [
     "countryimages/Mexico/Mexico 1.png",
     "countryimages/Mexico/Mexico 2.png",
@@ -112,11 +117,11 @@ japan_images = ["countryimages/japan/olpntng-style-japanese-high-tech-futuristic
                 "countryimages/japan/olpntng-style-shinjuku-gyoen-national-garden-sakura-trees-detailed-and-sharp-focused-classic-arch-.png"
           ]
 
-india_images = ["countryimages/india/india1.png",
-                "countryimages/india/india2.png",
-                "countryimages/india/india3.png",
+india_images = ["countryimages/india/indiares2.png",
                 "countryimages/india/india4.png",
                 "countryimages/india/india5.png",
+                "countryimages/india/indiares1.png",
+                "countryimages/india/gateway_india.png",
                 "countryimages/india/india6.png"]
 
 china_images = ["countryimages/China/forbidden_city.png",
@@ -200,7 +205,7 @@ def makeCountry(country_index):
 
 def get_text(country, index):
     country_dict = {"usa": american_food_images, "canada": canadian_food_images, "china": chinese_food_images, "france": france_data, "india": indian_food_images, "italy": italian_food_images,
-                    "japan": japanese_food_images, "korea": korean_food_images, "mexico": mexican_food_images}
+                    "japan": japanese_food_images, "korea": korea_data, "mexico": mexican_food_images}
     current_country = country_dict[country]
     current_text = current_country[index]
     return current_text
