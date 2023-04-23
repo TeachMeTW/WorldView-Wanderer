@@ -113,7 +113,7 @@ def visit(country_map, country):
     country_dict2 = { country_dict[k]:k for k in country_dict}
     
     MENU_MOUSE_POS = pygame.mouse.get_pos()
-    FOOD_BUTTON = Button(image = None, pos=(1100, 600), 
+    FOOD_BUTTON = Button(image = None, pos=(200, 525), 
         text_input="Cuisine of this Country", font=get_font(30, MC), base_color="black", hovering_color="blue", scale = .2)
    
     clock = pg.time.Clock()
@@ -183,7 +183,7 @@ def visit(country_map, country):
         screen.fill((255, 255, 255))
         screen.blit(img,(400, 60))
         if valid_dish is not None:
-            screen.blit(valid_dish, (1000, 300))
+            screen.blit(valid_dish, (30, 200))
         MENU_MOUSE_POS = pygame.mouse.get_pos()
         curr = f"NOW PLAYING: {CURRENT_SONG}"
         w = get_font_cjk(40)
