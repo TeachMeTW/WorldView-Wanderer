@@ -52,10 +52,10 @@ images_france = [
 images_italy = [
     "countryimages/italy/italy1.png",
     "countryimages/italy/italy2.png",
-    "countryimages/italy/enzo.png",
     "countryimages/italy/italy3.png",
-    "countryimages/italy/italy5.png"
-    "countryimages/italy/italyboat.png"
+    "countryimages/italy/italy4.png",
+    "countryimages/italy/italy5.png",
+    "countryimages/italy/italy6.png"
 ]
 
 
