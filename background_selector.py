@@ -59,7 +59,7 @@ images_italy = [
 images_korea = [
     "countryimages/korea/gwanghwaum.png",
     "countryimages/korea/gwangjang.png",
-    "countrymages/korea/jeju.png",
+    "countryimages/korea/jeju.png",
     "countryimages/korea/kyoja.png",
     "countryimages/korea/namsan.png",
     "countryimages/korea/palace.png"
@@ -74,12 +74,12 @@ images_mexico = [
     "countryimages/mexico/Teotihuacan-022.jpg"
 ]
 
-japan_images = ["country images/japan/mfuji.png", 
-          "country images/japan/sushi dai.png", 
-          "country images/japan/mtokyo tower.png",
-          "country images/japan/imperial palace.png",
-          "country images/japan/ichiran.png",
-          "country images/japan/sensoji temple.png"
+japan_images = ["countryimages/japan/mfuji.png", 
+          "countryimages/japan/sushi dai.png", 
+          "countryimages/japan/mtokyo tower.png",
+          "countryimages/japan/imperial palace.png",
+          "countryimages/japan/ichiran.png",
+          "countryimages/japan/sensoji temple.png"
           ]
 
 india_images = ["countryimages/india/bukhara.png",
@@ -104,18 +104,22 @@ class CountryMap():
             self.img.append(i)
         self.index = 0
     def left(self):
-        self.index+=1
-        current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
-        screen.blit(current_image, (100,100))
+        if self.index < len(self.img)-1:
+            self.index+=1
+            current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
+            screen.blit(current_image, (100,100))
     def right(self):
-        self.index -= 1
-        current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
-        screen.blit(current_image, (100, 100))
+        if self.index > 0:
+            self.index -= 1
+            current_image = pygame.image.load(self.img[self.index]).convert().convert_alpha()
+            screen.blit(current_image, (100, 100))
 
     def display(self):
         current_image = pygame.image.load(self.img[self.index])
-        screen.blit(current_image, (100,100))
-    
+        current_image = pygame.transform.scale(current_image, (500,500))
+        image_rect = current_image.get_rect()    
+        image_rect.center = (640, 360)
+        screen.blit(current_image, (400, 150))
 
 
 
