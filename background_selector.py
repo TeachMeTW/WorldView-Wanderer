@@ -38,6 +38,13 @@ images_usa = [
     "countryimages/usa/yellowstone.png",
     ]
 
+usa_data = [
+    "in-n-out",
+    "golden gate bridge",
+    "griffith observatory",
+    "san francisco",
+    "yellowstone"
+]
 
 images_france = [
     "countryimages/france/arc.png",
@@ -86,10 +93,10 @@ images_korea = [
 korea_data = [
     "Gwangjang Market",
     "Jeju Island",
-    "Myeongdong Kyoja"
-    "Gwanghwamun"
-    "Dol Hareubang"
-    "Gyeongbokgung Palace",
+    "Myeongdong Kyoja",
+    "Gwanghwamun",
+    "Dol Hareubang",
+    "Gyeongbokgung Palace"
 ]
 images_mexico = [
     "countryimages/Mexico/Mexico 1.png",
@@ -117,6 +124,15 @@ japan_images = ["countryimages/japan/olpntng-style-japanese-high-tech-futuristic
                 "countryimages/japan/olpntng-style-shinjuku-gyoen-national-garden-sakura-trees-detailed-and-sharp-focused-classic-arch-.png"
           ]
 
+japan_data = ["sushi dai",
+              "tokyo",
+              "ichiran ramen",
+              "mt fuji",
+              "nikko toshogu",
+              "osaka castle",
+              "shinjuku gyoen national garder",
+              "tokyo tower"]
+
 india_images = ["countryimages/india/indiares2.png",
                 "countryimages/india/india4.png",
                 "countryimages/india/india5.png",
@@ -124,12 +140,28 @@ india_images = ["countryimages/india/indiares2.png",
                 "countryimages/india/gateway_india.png",
                 "countryimages/india/india6.png"]
 
+india_data = ["gateway of india",
+              "palace of india",
+              "taj mahal",
+              "india gate",
+              "red fort",
+              "bukhara",
+              "karim"
+              ]
+
 china_images = ["countryimages/China/forbidden_city.png",
                 "countryimages/China/great_wall.png",
                 "countryimages/China/terracotta.png",
                 "countryimages/China/quanjude.png",
                 "countryimages/China/south_beauty.png",
                 "countryimages/China/summer_palace.png"]
+
+china_data = ["forbidden city",
+              "great wall",
+              "terracotta army",
+              "quanjude",
+              "south_beauty",
+              "summer_palace"]
                 
 american_food_images = ["food/american_food/lobster_rolls.jpg",
                         "food/american_food/ny_pizza.jpg",
@@ -189,8 +221,8 @@ mexican_food_images = ["food/mexican_food/birri_taco.jpg",
 
 
 def food_images(country_name):
-    country_dict = {"usa": american_food_images, "canada": canada_data, "china": chinese_food_images, "france": france_data, "india": indian_food_images, "italy": italy_data,
-                    "japan": japanese_food_images, "korea": korean_food_images, "mexico": mexico_data}
+    country_dict = {"usa": american_food_images, "canada": canadian_food_images, "china": chinese_food_images, "france": french_food_images, "india": indian_food_images, "italy": italian_food_images,
+                    "japan": japanese_food_images, "korea": korean_food_images, "mexico": mexican_food_images}
     return country_dict[country_name]
 
 def get_country_name(country_index):
@@ -204,8 +236,8 @@ def makeCountry(country_index):
     return countryMap
 
 def get_text(country, index):
-    country_dict = {"usa": american_food_images, "canada": canadian_food_images, "china": chinese_food_images, "france": france_data, "india": indian_food_images, "italy": italian_food_images,
-                    "japan": japanese_food_images, "korea": korea_data, "mexico": mexican_food_images}
+    country_dict = {"usa": usa_data, "canada": canada_data, "china": china_data, "france": france_data, "india": india_data, "italy": italy_data,
+                    "japan": japan_data, "korea": korea_data, "mexico": mexico_data}
     current_country = country_dict[country]
     current_text = current_country[index]
     return current_text

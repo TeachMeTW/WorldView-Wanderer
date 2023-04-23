@@ -180,13 +180,14 @@ def visit(country_map, country):
     valid_dish = None
     while running:
         img = country_map.display()
+        img = pygame.transform.scale(img, (1280, 720))
         screen.fill((255, 255, 255))
-        screen.blit(img,(400, 60))
+        screen.blit(img,(0, 0))
         current_text = get_text(country, country_map.get_index())
         print("country: " + str(country))
         print("get index: " + str(country_map.get_index()))
         print("current text: " + str(current_text))
-        TEXT_BUTTON = Button(image=None, pos=(700,600),  text_input=current_text, font=get_font(50, MC), base_color="black", hovering_color="black")
+        TEXT_BUTTON = Button(image=None, pos=(700,600),  text_input=current_text, font=get_font(50, MC), base_color="white", hovering_color="white")
         if valid_dish is not None:
             screen.blit(valid_dish, (30, 200))
 
