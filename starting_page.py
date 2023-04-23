@@ -13,7 +13,7 @@ selector_width = 100
 selector_height = 100
 screen_width = 1280
 screen_height = 720
-country_dict = {0: 'Canada', 1: 'USA', 2: 'France', 3: 'Italy', 4: 'Korea', 5: 'Mexico', 6: 'Japan', 7: 'India'}
+country_dict = {0: "usa", 1: "canada", 2: "china", 3: "france", 4: "india", 5: "italy", 6: "japan", 7: "korea", 8: "mexico"}
    
 
 
@@ -109,7 +109,7 @@ def get_font_cjk(size): # Returns Press-Start-2P in the desired size
 
 def visit(country_map, country):
     
-    country_dict = {0: 'Canada', 1: 'USA', 2: 'France', 3: 'Italy', 4: 'Korea', 5: 'Mexico', 6: 'Japan', 7: 'India'}
+    country_dict = {0: "usa", 1: "canada", 2: "china", 3: "france", 4: "india", 5: "italy", 6: "japan", 7: "korea", 8: "mexico"}
     country_dict2 = { country_dict[k]:k for k in country_dict}
     
     
@@ -134,15 +134,15 @@ def visit(country_map, country):
         [COLOR_LIST_INACTIVE, COLOR_LIST_ACTIVE],
         30, 30, 200, 40, 
         font,
-        "Select Destination", ["Canada", "China", "France", "India", "Italy", "Japan", "Mexico", "Korea","USA"])
+        "Select Destination", ["canada", "china", "france", "india", "italy", "japan", "mexico", "korea","usa"])
 
     #timezone dictionary 
-    timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9, 
-                 "India":12.5, "Italy":9, "Japan":16, "Mexico":1, 
-                 "Korea":16, "USA":3}
+    timezone_dict = {0:0,"canada": 3, "china":15, "france":9, "germany": 9, 
+                 "india":12.5, "italy":9, "japan":16, "mexico":1, 
+                 "korea":16, "usa":3}
 
-    date_timezone_dict={0:"America/Los_Angeles","Japan":"Asia/Tokyo", "India":"Asia/Calcutta", "China":"Asia/Chongqing", "France":"Europe/Paris", "Germany":"Europe/Paris", 
-                    "Italy":"Europe/Paris", "Canada":"Canada/Atlantic", "Mexico":"America/Mexico_City", "Korea":"Asia/Seoul", "USA":"America/Fort_Wayne"}
+    date_timezone_dict={0:"America/Los_Angeles","japan":"Asia/Tokyo", "india":"Asia/Calcutta", "china":"Asia/Chongqing", "france":"Europe/Paris", "germany":"Europe/Paris", 
+                    "italy":"Europe/Paris", "canada":"Canada/Atlantic", "mexico":"America/Mexico_City", "korea":"Asia/Seoul", "usa":"America/Fort_Wayne"}
     
     CURRENT_LOC = country
     change(CURRENT_LOC)
@@ -388,7 +388,7 @@ def main():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if VISIT_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    country_index = random.randint(0,7)
+                    country_index = random.randint(0,8)
                     country_map = makeCountry(country_index)
                     global CURRENT_LOC
                     CURRENT_LOC = country_dict[country_index]
