@@ -139,10 +139,10 @@ def visit(country_map, country):
     #timezone dictionary 
     timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9, 
                  "India":12.5, "Italy":9, "Japan":16, "Mexico":1, 
-                 "South Korea":16, "USA":3}
+                 "Korea":16, "USA":3}
 
     date_timezone_dict={0:"America/Los_Angeles","Japan":"Asia/Tokyo", "India":"Asia/Calcutta", "China":"Asia/Chongqing", "France":"Europe/Paris", "Germany":"Europe/Paris", 
-                    "Italy":"Europe/Paris", "Canada":"Canada/Atlantic", "Mexico":"America/Mexico_City", "South Korea":"Asia/Seoul", "USA":"America/Fort_Wayne"}
+                    "Italy":"Europe/Paris", "Canada":"Canada/Atlantic", "Mexico":"America/Mexico_City", "Korea":"Asia/Seoul", "USA":"America/Fort_Wayne"}
     
     CURRENT_LOC = country
     change(CURRENT_LOC)
@@ -173,8 +173,8 @@ def visit(country_map, country):
     screen.blit(left_selector, dest=(200, 540))
     screen.blit(right_selector, dest = (1000, 540))
     #country_map.display()
-    print(country_map.img)
-    temp = 0
+    #print(country_map.img)
+    
     while running:
         img = country_map.display()
         screen.fill((255, 255, 255))
@@ -206,8 +206,8 @@ def visit(country_map, country):
 
             #pygame.display.update()
             #screen.fill((255, 255, 255))
-        clock_surface = render_pst_clock(font, -7+(timezone_dict[temp]))
-        date_surface = render_date(font_date, date_timezone_dict[temp])
+        clock_surface = render_pst_clock(font, -7+(timezone_dict[country]))
+        date_surface = render_date(font_date, date_timezone_dict[country])
         screen.blit(date_surface, (1110, 80))
         screen.blit(clock_surface, (screen.get_width() - clock_surface.get_width() - 30, 30))
         eventlist = pygame.event.get()    
@@ -228,7 +228,7 @@ def visit(country_map, country):
                 cmap = makeCountry(cindex)
                 print(cmap.img)
                 visit(cmap,temp)
-
+                temp = selected_option
                 continue
             
             
