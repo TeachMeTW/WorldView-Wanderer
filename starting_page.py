@@ -168,7 +168,7 @@ def visit(country_map, country):
     I = 0
     running = True
     MUTE_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/volume.png'), (100,100)), pos=(50,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
-    TEST_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/mbut.png'), (100,100)), pos=(1100,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
+    TEST_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/mbut.png'), (100,100)), pos=(1230,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
     #print('here')
     screen.blit(left_selector, dest=(200, 540))
     screen.blit(right_selector, dest = (1000, 540))
@@ -338,7 +338,7 @@ def main():
     BG  = blurSurf(BG, 10)
     
     MUTE_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/volume.png'), (100,100)), pos=(50,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
-    TEST_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/mbut.png'), (100,100)), pos=(1100,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
+    TEST_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/mbut.png'), (100,100)), pos=(1230,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
     
     
     while True:
