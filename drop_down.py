@@ -2,7 +2,10 @@ import pygame as pg
 import random
 import datetime
 import pytz
+from starting_page import *
 
+country_dict = {0: 'Canada', 1: 'USA', 2: 'France', 3: 'Italy', 4: 'Korea', 5: 'Mexico', 6: 'Japan', 7: 'India'}
+country_dict2 = { country_dict[k]:k for k in country_dict}
 class DropDown():
 
     def __init__(self, color_menu, color_option, x, y, w, h, font, main, options):
@@ -49,6 +52,8 @@ class DropDown():
             if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
                 if self.menu_active:
                     self.display_options = random.sample(self.options, 3)
+                    
+
                     self.draw_menu = True
                 elif self.draw_menu and self.active_option >= 0:
                     self.draw_menu = False
@@ -71,6 +76,7 @@ def render_date(font, timezone):
     date_surface = font.render(date_str, True, (0, 0, 0))
     return date_surface
 
+
 pg.init()
 clock = pg.time.Clock()
 
@@ -84,12 +90,15 @@ COLOR_INACTIVE = (16, 109, 163)
 COLOR_LIST_INACTIVE = (98, 156, 102)
 COLOR_LIST_ACTIVE = (108, 186, 122)
 
+
+
+
 list1 = DropDown(
     [COLOR_INACTIVE, COLOR_ACTIVE],
     [COLOR_LIST_INACTIVE, COLOR_LIST_ACTIVE],
     30, 30, 200, 40, 
     font,
-    "Select Destination", ["Canada", "China", "France", "Germany", "India", "Italy", "Japan", "Mexico", "South Korea","USA"])
+    "Select Destination", ["Canada", "China", "France", "India", "Italy", "Japan", "Mexico", "Korea","USA"])
 
 #timezone dictionary 
 timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9, 
@@ -98,41 +107,53 @@ timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9,
 
 date_timezone_dict={0:"America/Los_Angeles","Japan":"Asia/Tokyo", "India":"Asia/Calcutta", "China":"Asia/Chongqing", "France":"Europe/Paris", "Germany":"Europe/Paris", 
                     "Italy":"Europe/Paris", "Canada":"Canada/Atlantic", "Mexico":"America/Mexico_City", "South Korea":"Asia/Seoul", "USA":"America/Fort_Wayne"}
-run = True
-temp = 0
-while run:
-    clock.tick(30)
+def main():
+    run = True
+    temp = 0
+    while run:
+        clock.tick(30)
 
-    event_list = pg.event.get()
-    for event in event_list:
-        if event.type == pg.QUIT:
-            run = False
+        event_list = pg.event.get()
+        for event in event_list:
+            if event.type == pg.QUIT:
+                pg.quit()
+                run = False
 
-    
-    selected_option = list1.update(event_list)
+        
+        selected_option = list1.update(event_list)
 
-    if str(selected_option) != '-1':
-        list1.main = 'Select Destination' 
-        temp = selected_option   
-    else:
+        if str(selected_option) != '-1':
+            pg.init()
+            list1.main = 'Select Destination' 
+            temp = selected_option
+            cindex=(country_dict2[temp])
+            print(cindex)
+            cmap = makeCountry(cindex)
+            print(cmap.img)
+            visit(cmap)
+            continue
+        else:
+            list1.draw(screen)
+            pg.display.flip()
+            
+            #continue
+
+
+        screen.fill((255, 255, 255))
+        clock_surface = render_pst_clock(font, -7+(timezone_dict[temp]))
+        date_surface = render_date(font_date, date_timezone_dict[temp])
+        screen.blit(date_surface, (1110, 80))
+        screen.blit(clock_surface, (screen.get_width() - clock_surface.get_width() - 30, 30))
+
+        #else:
+        #screen.blit(render_pst_clock(font, -7), (screen.get_width() - clock_surface.get_width() - 15, 15))
+
+
         list1.draw(screen)
         pg.display.flip()
         
-        #continue
 
-
-    screen.fill((255, 255, 255))
-    clock_surface = render_pst_clock(font, -7+(timezone_dict[temp]))
-    date_surface = render_date(font_date, date_timezone_dict[temp])
-    screen.blit(date_surface, (1110, 80))
-    screen.blit(clock_surface, (screen.get_width() - clock_surface.get_width() - 30, 30))
-
-    #else:
-    #screen.blit(render_pst_clock(font, -7), (screen.get_width() - clock_surface.get_width() - 15, 15))
-
-
-    list1.draw(screen)
-    pg.display.flip()
-    
 pg.quit()
-exit()
+
+if __name__ == "__main__":
+    main()

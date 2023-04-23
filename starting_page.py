@@ -7,21 +7,15 @@ import PIL
 import random
 from background_selector import makeCountry, CountryMap
 
-pygame.init()
-pygame.mixer.init()
 
-pygame.font.init()
-my_font = pygame.font.SysFont('Comic Sans MS', 30)
 selector_width = 100
 selector_height = 100
 screen_width = 1280
 screen_height = 720
-country_dict = {0: 'Canada', 1: 'USA', 2: 'French', 3: 'Italy', 4: 'Korea', 5: 'Mexico', 6: 'Japan', 7: 'India'}
+country_dict = {0: 'Canada', 1: 'USA', 2: 'France', 3: 'Italy', 4: 'Korea', 5: 'Mexico', 6: 'Japan', 7: 'India'}
    
 
-SCREEN = pygame.display.set_mode((1280, 720))
-pygame.display.set_caption("Wordview Wanderer")
-clock = pygame.time.Clock()
+
 running = True
 MUSIC_END = pygame.USEREVENT+1
 CURRENT_SONG = ' '
@@ -68,7 +62,7 @@ class Playlist:
 
 jp = Playlist('assets/Japan')
 usa = Playlist('assets/USA')
-fr = Playlist('assets/French')
+fr = Playlist('assets/France')
 ca = Playlist('assets/Canada')
 mx = Playlist('assets/Mexico')
 kr = Playlist('assets/Korea')
@@ -91,30 +85,14 @@ def blurSurf(surface, amt):
     surf = pygame.transform.smoothscale(surf, surf_size)
     return surf
 
+
 WINDOW_SIZE = (1280, 720)
-BG = pygame.image.load("assets/lake.jpg")
-BG = pygame.transform.scale(BG, WINDOW_SIZE)
-BG  = blurSurf(BG, 10)
 DBZ = 0
 MC = 1
 WIDTH = 1280
 HEIGHT = 720
 I = 0
-screen = pygame.display.set_mode((screen_width, screen_height))
 
-left_selector = pygame.image.load("left-arrow-png-left-icon-1600-2971489872.png").convert_alpha()
-right_selector = pygame.image.load("KTjAXb7Tq-2709733076.png").convert_alpha()
-
-left_selector = pygame.transform.scale(left_selector, [selector_width, selector_height])
-right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
-
-images = ["countryimages/japan/mfuji.png", 
-        "countryimages/japan/sushi dai.png", 
-        "countryimages/japan/mtokyo tower.png",
-        "countryimages/japan/imperial palace.png",
-        "countryimages/japan/ichiran.png",
-        "countryimages/japan/sensoji temple.png"
-]
 
 
 def get_font(size, type): # Returns Press-Start-2P in the desired size
@@ -129,6 +107,22 @@ def get_font_cjk(size): # Returns Press-Start-2P in the desired size
 
 
 def visit(country_map):
+    pygame.init()
+    pygame.mixer.init()
+    pygame.font.init()
+    SCREEN = pygame.display.set_mode((1280, 720))
+    pygame.display.set_caption("Wordview Wanderer")
+    clock = pygame.time.Clock()
+    my_font = pygame.font.SysFont('Comic Sans MS', 30)
+    screen = pygame.display.set_mode((screen_width, screen_height))
+
+    left_selector = pygame.image.load("left-arrow-png-left-icon-1600-2971489872.png").convert_alpha()
+    right_selector = pygame.image.load("KTjAXb7Tq-2709733076.png").convert_alpha()
+
+    left_selector = pygame.transform.scale(left_selector, [selector_width, selector_height])
+    right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
+
+
     pygame.display.set_caption("Country Map")
     screen.fill((255, 255, 255))
     P=0
@@ -136,13 +130,16 @@ def visit(country_map):
     running = True
     MUTE_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/volume.png'), (100,100)), pos=(50,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
     TEST_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/mbut.png'), (100,100)), pos=(1100,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
-    
+    #print('here')
     screen.blit(left_selector, dest=(200, 540))
     screen.blit(right_selector, dest = (1000, 540))
-    
+    #country_map.display()
+    print(country_map.img)
     while running:
-        country_map.display()
+        img = country_map.display()
         screen.fill((255, 255, 255))
+        screen.blit(img,(100,100))
+        
         MENU_MOUSE_POS = pygame.mouse.get_pos()
         curr = f"NOW PLAYING: {CURRENT_SONG}"
         w = get_font_cjk(40)
@@ -166,8 +163,7 @@ def visit(country_map):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-                pygame.quit()
-                sys.exit()
+                
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     country_map.left()
@@ -202,7 +198,10 @@ def visit(country_map):
         
         pygame.display.update()
         # screen.blit(current_text_index, dest=(900, 800))
-        
+    pygame.display.update()
+    country_map.img.clear()
+    country_map.img=0
+    return
 
 def startbackground():
     #bckgr = pygame.mixer.Sound('assets/jazz.wav')
@@ -219,7 +218,7 @@ def change(dir):
     pygame.mixer.music.stop()
     if dir == 'Japan':
         jp.play()
-    if dir == 'French':
+    if dir == 'France':
         fr.play()
     if dir == 'Canada':
         ca.play()
@@ -236,8 +235,21 @@ def change(dir):
     pass
 
 
+def main():
+    pygame.init()
+    pygame.mixer.init()
+    pygame.font.init()
+    SCREEN = pygame.display.set_mode((1280, 720))
+    pygame.display.set_caption("Wordview Wanderer")
+    clock = pygame.time.Clock()
+    my_font = pygame.font.SysFont('Comic Sans MS', 30)
+    BG = pygame.image.load("assets/lake.jpg")
+    BG = pygame.transform.scale(BG, WINDOW_SIZE)
+    BG  = blurSurf(BG, 10)
+    pygame.init()
+    pygame.mixer.init()
 
-def main_menu():
+    pygame.font.init()
     startbackground()
     P=0
     I = 0
@@ -328,7 +340,10 @@ def main_menu():
 
         pygame.display.update()
 
-main_menu()
+if __name__ == "__main__":
+    
+    print(__name__)
+    main()
 
-
-pygame.quit()
+else:
+    pygame.quit()
