@@ -9,7 +9,7 @@ class Button():
 		self.text_input = text_input
 		self.text = self.font.render(self.text_input, True, self.base_color)
 		
-		if scale is None:
+		if scale is None and image is not None:
 			self.image = image
 		elif image is not None:
 			width = image.get_width()
