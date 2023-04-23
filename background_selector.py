@@ -29,6 +29,7 @@ canada_data = [
     "Poutineville Restaurant",
     "Stanley Park"
 ]
+
 images_usa = [
     "countryimages/usa/borgor.png",
     "countryimages/usa/goldengate.png",
@@ -37,14 +38,21 @@ images_usa = [
     "countryimages/usa/yellowstone.png",
     ]
 
+usa_data = [
+    "in-n-out",
+    "golden gate bridge",
+    "griffith observatory",
+    "san francisco",
+    "yellowstone"
+]
 
 images_france = [
-    "countryimages//France//arc.png"
-    "countryimages//France//eiffel.png"
-    "countryimages//France//comptoir.png"
-    "countryimages//France//tour.png"
-    "countryimages//France//notre_dame.png"
-    "countryimages//France//versailles.png"
+    "countryimages/france/arc.png",
+    "countryimages/france/eiffel.png",
+    "countryimages/france/comptoir.png",
+    "countryimages/france/tour.png",
+    "countryimages/france/notre_dame.png",
+    "countryimages/france/versailles.png"
     ]
 france_data = [
     "Arc de Triomphe",
@@ -85,10 +93,10 @@ images_korea = [
 korea_data = [
     "Gwangjang Market",
     "Jeju Island",
-    "Myeongdong Kyoja"
-    "Gwanghwamun"
-    "Dol Hareubang"
-    "Gyeongbokgung Palace",
+    "Myeongdong Kyoja",
+    "Gwanghwamun",
+    "Dol Hareubang",
+    "Gyeongbokgung Palace"
 ]
 images_mexico = [
     "countryimages/Mexico/Mexico 1.png",
@@ -108,13 +116,22 @@ mexico_data = [
     "Palacio de Bellas Artes"
 ]
 
-japan_images = ["countryimages//japan//olpntng-style-conveyor-belt-sushifood-sushi-japanese-food-katsu-sakeasymmetric-composition-.png",
-                "countryimages//japan//olpntng-style-japanese-restaurant-detailed-and-sharp-focused-classic-architecture-with-neon-accent-.png",
-                "countryimages//japan//olpntng-style-mount-fuji-detailed-and-sharp-focusedasymmetric-composition-golden-ratio-dramatic-.png",
-                "countryimages//japan//olpntng-style-nikko-toshogu-detailed-and-sharp-focused-classic-architecture-with-neon-accents-as-.png",
-                "countryimages//japan//olpntng-style-osaka-castle-detailed-and-sharp-focused-classic-architecture-with-neon-accents-asy-.png",
-                "countryimages//japan//tokyo-towerasymmetric-composition-golden-ratio-dramatic-awe-inspiring-full-spectrum-color-pall-.png"
+japan_images = ["countryimages/japan/olpntng-style-japanese-high-tech-futuristic-village-in-2085-nighttime-cityscape-with-detailed-and-.png",
+                "countryimages/japan/olpntng-style-japanese-restaurant-detailed-and-sharp-focused-classic-architecture-with-neon-accent-.png",
+                "countryimages/japan/olpntng-style-mount-fuji-detailed-and-sharp-focusedasymmetric-composition-golden-ratio-dramatic-.png",
+                "countryimages/japan/olpntng-style-nikko-toshogu-detailed-and-sharp-focused-classic-architecture-with-neon-accents-as-.png",
+                "countryimages/japan/olpntng-style-osaka-castle-detailed-and-sharp-focused-classic-architecture-with-neon-accents-asy-.png",
+                "countryimages/japan/olpntng-style-shinjuku-gyoen-national-garden-sakura-trees-detailed-and-sharp-focused-classic-arch-.png"
           ]
+
+japan_data = ["sushi dai",
+              "tokyo",
+              "ichiran ramen",
+              "mt fuji",
+              "nikko toshogu",
+              "osaka castle",
+              "shinjuku gyoen national garder",
+              "tokyo tower"]
 
 india_images = ["countryimages/india/indiares2.png",
                 "countryimages/india/india4.png",
@@ -123,12 +140,28 @@ india_images = ["countryimages/india/indiares2.png",
                 "countryimages/india/gateway_india.png",
                 "countryimages/india/india6.png"]
 
-china_images = ["countryimages//China//forbidden_city.png",
-                "countryimages//China//great_wall.png",
-                "countryimages//China//terracotta.png",
-                "countryimages//China//quanjude.png",
-                "countryimages//China//south_beauty.png",
-                "countryimages//China//summer_palace.png"]
+india_data = ["gateway of india",
+              "palace of india",
+              "taj mahal",
+              "india gate",
+              "red fort",
+              "bukhara",
+              "karim"
+              ]
+
+china_images = ["countryimages/China/forbidden_city.png",
+                "countryimages/China/great_wall.png",
+                "countryimages/China/terracotta.png",
+                "countryimages/China/quanjude.png",
+                "countryimages/China/south_beauty.png",
+                "countryimages/China/summer_palace.png"]
+
+china_data = ["forbidden city",
+              "great wall",
+              "terracotta army",
+              "quanjude",
+              "south_beauty",
+              "summer_palace"]
                 
 american_food_images = ["food/american_food/lobster_rolls.jpg",
                         "food/american_food/ny_pizza.jpg",
@@ -202,6 +235,14 @@ def makeCountry(country_index):
     countryMap = CountryMap(chosen_country)
     return countryMap
 
+def get_text(country, index):
+    country_dict = {"usa": usa_data, "canada": canada_data, "china": china_data, "france": france_data, "india": india_data, "italy": italy_data,
+                    "japan": japan_data, "korea": korea_data, "mexico": mexico_data}
+    current_country = country_dict[country]
+    current_text = current_country[index]
+    return current_text
+    
+
 class CountryMap():
     index = 0
     img = []
@@ -230,6 +271,9 @@ class CountryMap():
         image_rect = current_image.get_rect()    
         image_rect.center = (screen_width/2, screen_height/2)
         return current_image
+    
+    def get_index(self):
+        return self.index
 
 
 
