@@ -6,6 +6,7 @@ import re
 import PIL
 import random
 from background_selector import makeCountry, CountryMap
+from drop_down import *
 
 
 selector_width = 100
@@ -106,7 +107,45 @@ def get_font_cjk(size): # Returns Press-Start-2P in the desired size
 
 
 
-def visit(country_map):
+def visit(country_map, country):
+    
+    country_dict = {0: 'Canada', 1: 'USA', 2: 'France', 3: 'Italy', 4: 'Korea', 5: 'Mexico', 6: 'Japan', 7: 'India'}
+    country_dict2 = { country_dict[k]:k for k in country_dict}
+    
+    
+
+    clock = pg.time.Clock()
+
+    window_size = (1280, 720)
+    screen = pg.display.set_mode(window_size)
+    font = pg.font.Font("assets/font.ttf", 45)
+    font_date = pg.font.Font("assets/font.ttf", 40)
+
+    COLOR_ACTIVE = (148, 208, 242)
+    COLOR_INACTIVE = (16, 109, 163)
+    COLOR_LIST_INACTIVE = (98, 156, 102)
+    COLOR_LIST_ACTIVE = (108, 186, 122)
+
+
+
+
+    list1 = DropDown(
+        [COLOR_INACTIVE, COLOR_ACTIVE],
+        [COLOR_LIST_INACTIVE, COLOR_LIST_ACTIVE],
+        30, 30, 200, 40, 
+        font,
+        "Select Destination", ["Canada", "China", "France", "India", "Italy", "Japan", "Mexico", "Korea","USA"])
+
+    #timezone dictionary 
+    timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9, 
+                 "India":12.5, "Italy":9, "Japan":16, "Mexico":1, 
+                 "South Korea":16, "USA":3}
+
+    date_timezone_dict={0:"America/Los_Angeles","Japan":"Asia/Tokyo", "India":"Asia/Calcutta", "China":"Asia/Chongqing", "France":"Europe/Paris", "Germany":"Europe/Paris", 
+                    "Italy":"Europe/Paris", "Canada":"Canada/Atlantic", "Mexico":"America/Mexico_City", "South Korea":"Asia/Seoul", "USA":"America/Fort_Wayne"}
+    
+    CURRENT_LOC = country
+    change(CURRENT_LOC)
     pygame.init()
     pygame.mixer.init()
     pygame.font.init()
@@ -135,6 +174,7 @@ def visit(country_map):
     screen.blit(right_selector, dest = (1000, 540))
     #country_map.display()
     print(country_map.img)
+    temp = 0
     while running:
         img = country_map.display()
         screen.fill((255, 255, 255))
@@ -151,16 +191,51 @@ def visit(country_map):
 
    
         
-
+        #pygame.display.update()
         for button in [TEST_BUTTON, MUTE_BUTTON, NOW_PLAYING]:
             # if button is VISIT_BUTTON:
             #     color = "black"
             #     pygame.draw.rect(SCREEN, color, pygame.Rect(470, 365, 350, 60))
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
+        #pygame.display.update()
+        list1.draw(screen)
+                #pg.display.flip()
+                
+                #continue
 
+            #pygame.display.update()
+            #screen.fill((255, 255, 255))
+        clock_surface = render_pst_clock(font, -7+(timezone_dict[temp]))
+        date_surface = render_date(font_date, date_timezone_dict[temp])
+        screen.blit(date_surface, (1110, 80))
+        screen.blit(clock_surface, (screen.get_width() - clock_surface.get_width() - 30, 30))
+        eventlist = pygame.event.get()    
+        for event in eventlist:
             
-        for event in pygame.event.get():
+            selected_option = list1.update(eventlist)
+            
+            if str(selected_option) != '-1':
+                pg.init()
+                
+                list1.main = 'Select Destination' 
+                temp = selected_option
+                #pygame.display.update()
+                country_map.img.clear()
+                country_map.img=0
+                cindex=(country_dict2[temp])
+                print(cindex)
+                cmap = makeCountry(cindex)
+                print(cmap.img)
+                visit(cmap,temp)
+
+                continue
+            
+            
+            #pygame.display.update()
+            
+            
+            
             if event.type == pygame.QUIT:
                 running = False
                 
@@ -173,6 +248,8 @@ def visit(country_map):
                     country_map.display()
                 if event.key == pygame.K_ESCAPE:
                     running = False 
+                #pygame.display.update()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
                 if MUTE_BUTTON.checkForInput(MENU_MOUSE_POS):
                     if P==0:
                         MUTE_BUTTON.image = pygame.transform.scale(pygame.image.load('assets/muted.png'),(100,100))
@@ -187,13 +264,15 @@ def visit(country_map):
                 if TEST_BUTTON.checkForInput(MENU_MOUSE_POS):
                     
                     change(CURRENT_LOC)
+                #pygame.display.update()
                     
                     
             for p in playlists:
-                    if event.type == MUSIC_END and len(p.songs) == 0:
-                        p.play()
+                #pygame.display.update()
+                if event.type == MUSIC_END and len(p.songs) == 0:
+                    p.play()
                         
-        
+            pygame.display.update()
         
         
         pygame.display.update()
@@ -314,7 +393,7 @@ def main():
                     global CURRENT_LOC
                     CURRENT_LOC = country_dict[country_index]
                     change(country_dict[country_index])
-                    visit(country_map)
+                    visit(country_map, country_dict[country_index])
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()

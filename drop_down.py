@@ -3,7 +3,9 @@ import random
 import datetime
 import pytz
 from starting_page import *
+from background_selector import makeCountry, CountryMap
 
+pg.font.init()
 country_dict = {0: 'Canada', 1: 'USA', 2: 'France', 3: 'Italy', 4: 'Korea', 5: 'Mexico', 6: 'Japan', 7: 'India'}
 country_dict2 = { country_dict[k]:k for k in country_dict}
 class DropDown():
@@ -77,7 +79,6 @@ def render_date(font, timezone):
     return date_surface
 
 
-pg.init()
 clock = pg.time.Clock()
 
 window_size = (1280, 720)
@@ -108,6 +109,7 @@ timezone_dict = {0:0,"Canada": 3, "China":15, "France":9, "Germany": 9,
 date_timezone_dict={0:"America/Los_Angeles","Japan":"Asia/Tokyo", "India":"Asia/Calcutta", "China":"Asia/Chongqing", "France":"Europe/Paris", "Germany":"Europe/Paris", 
                     "Italy":"Europe/Paris", "Canada":"Canada/Atlantic", "Mexico":"America/Mexico_City", "South Korea":"Asia/Seoul", "USA":"America/Fort_Wayne"}
 def main():
+    pg.init()
     run = True
     temp = 0
     while run:
@@ -130,7 +132,8 @@ def main():
             print(cindex)
             cmap = makeCountry(cindex)
             print(cmap.img)
-            visit(cmap)
+            visit(cmap,temp)
+            
             continue
         else:
             list1.draw(screen)
@@ -153,7 +156,7 @@ def main():
         pg.display.flip()
         
 
-pg.quit()
+
 
 if __name__ == "__main__":
     main()
