@@ -72,7 +72,7 @@ ind = Playlist('assets/India')
 ch = Playlist('assets/China')
 
 
-playlists = [jp,usa,fr]
+playlists = [jp,usa,fr, ca, mx,kr,ity,ind,ch]
 
 
 
@@ -183,7 +183,10 @@ def visit(country_map, country):
         screen.fill((255, 255, 255))
         screen.blit(img,(400, 60))
         current_text = get_text(country, country_map.get_index())
-        TEXT_BUTTON = Button(image=None, pos=(500,600),  text_input=current_text, font=get_font(50, MC), base_color="black", hovering_color="black")
+        print("country: " + str(country))
+        print("get index: " + str(country_map.get_index()))
+        print("current text: " + str(current_text))
+        TEXT_BUTTON = Button(image=None, pos=(700,600),  text_input=current_text, font=get_font(50, MC), base_color="black", hovering_color="black")
         if valid_dish is not None:
             screen.blit(valid_dish, (30, 200))
 
@@ -419,6 +422,7 @@ def main():
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
+                    
                 if MUTE_BUTTON.checkForInput(MENU_MOUSE_POS):
                     if P==1:
                         MUTE_BUTTON.image = pygame.transform.scale(pygame.image.load('assets/muted.png'),(100,100))

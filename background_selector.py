@@ -41,25 +41,40 @@ images_usa = [
 
 
 images_france = [
-    "countryimages//France//arc.png"
-    "countryimages//France//eiffel.png"
-    "countryimages//France//comptoir.png"
-    "countryimages//France//tour.png"
-    "countryimages//France//notre_dame.png"
-    "countryimages//France//versailles.png"
+    "countryimages/france/arc.png",
+    "countryimages/france/eiffel.png",
+    "countryimages/france/comptoir.png",
+    "countryimages/france/tour.png",
+    "countryimages/france/notre_dame.png",
+    "countryimages/france/versailles.png"
     ]
+france_data = [
+    "Arc de Triomphe",
+    "Eiffel Tower",
+    "Comptoir du Relais",
+    "Tour Montparnasse",
+    "Notre Dame",
+    "Versailles"
+]
 
 
 images_italy = [
     "countryimages/italy/italy1.png",
     "countryimages/italy/italy2.png",
-    "countryimages/italy/enzo.png",
     "countryimages/italy/italy3.png",
-    "countryimages/italy/italy5.png"
-    "countryimages/italy/italyboat.png"
+    "countryimages/italy/italy4.png",
+    "countryimages/italy/italy5.png",
+    "countryimages/italy/italy6.png"
 ]
 
-
+italy_data = [
+    "Cinque Terre",
+    "Leaning Tower of Pisa",
+    "Colosseum",
+    "Trattoria da Vittorio",
+    "Osteria Francescana",
+    "Duomo di Milano"
+]
 images_korea = [
     "countryimages/korea/korea1.png",
     "countryimages/korea/korea2.png",
@@ -69,6 +84,8 @@ images_korea = [
     "countryimages/korea/korea6.png"
     ]
 
+korea_data = [
+    ""]
 images_mexico = [
     "countryimages/Mexico/Mexico 1.png",
     "countryimages/Mexico/Mexico 2.png",
@@ -78,17 +95,36 @@ images_mexico = [
     "countryimages/Mexico/Mexico 6.png"
 ]
 
-japan_images = [""
+mexico_data = [ 
+    "Teotihuacan",
+    "Pujol",
+    "Notre Dame",
+    "La Carnita",
+    "Chichen Itza",
+    "Palacio de Bellas Artes"
+]
+
+japan_images = ["countryimages/japan/olpntng-style-japanese-high-tech-futuristic-village-in-2085-nighttime-cityscape-with-detailed-and-.png",
+                "countryimages/japan/olpntng-style-japanese-restaurant-detailed-and-sharp-focused-classic-architecture-with-neon-accent-.png",
+                "countryimages/japan/olpntng-style-mount-fuji-detailed-and-sharp-focusedasymmetric-composition-golden-ratio-dramatic-.png",
+                "countryimages/japan/olpntng-style-nikko-toshogu-detailed-and-sharp-focused-classic-architecture-with-neon-accents-as-.png",
+                "countryimages/japan/olpntng-style-osaka-castle-detailed-and-sharp-focused-classic-architecture-with-neon-accents-asy-.png",
+                "countryimages/japan/olpntng-style-shinjuku-gyoen-national-garden-sakura-trees-detailed-and-sharp-focused-classic-arch-.png"
           ]
 
-india_images = [""]
+india_images = ["countryimages/india/india1.png",
+                "countryimages/india/india2.png",
+                "countryimages/india/india3.png",
+                "countryimages/india/india4.png",
+                "countryimages/india/india5.png",
+                "countryimages/india/india6.png"]
 
-china_images = ["countryimages//China//forbidden_city.png",
-                "countryimages//China//great_wall.png",
-                "countryimages//China//terracotta.png",
-                "countryimages//China//quanjude.png",
-                "countryimages//China//south_beauty.png",
-                "countryimages//China//summer_palace.png"]
+china_images = ["countryimages/China/forbidden_city.png",
+                "countryimages/China/great_wall.png",
+                "countryimages/China/terracotta.png",
+                "countryimages/China/quanjude.png",
+                "countryimages/China/south_beauty.png",
+                "countryimages/China/summer_palace.png"]
                 
 american_food_images = ["food/american_food/lobster_rolls.jpg",
                         "food/american_food/ny_pizza.jpg",
@@ -148,8 +184,8 @@ mexican_food_images = ["food/mexican_food/birri_taco.jpg",
 
 
 def food_images(country_name):
-    country_dict = {"usa": american_food_images, "canada": canada_data, "china": chinese_food_images, "france": french_food_images, "india": indian_food_images, "italy": italian_food_images,
-                    "japan": japanese_food_images, "korea": korean_food_images, "mexico": mexican_food_images}
+    country_dict = {"usa": american_food_images, "canada": canada_data, "china": chinese_food_images, "france": france_data, "india": indian_food_images, "italy": italy_data,
+                    "japan": japanese_food_images, "korea": korean_food_images, "mexico": mexico_data}
     return country_dict[country_name]
 
 def get_country_name(country_index):
@@ -163,11 +199,11 @@ def makeCountry(country_index):
     return countryMap
 
 def get_text(country, index):
-    country_dict = {"usa": american_food_images, "canada": canadian_food_images, "china": chinese_food_images, "france": french_food_images, "india": indian_food_images, "italy": italian_food_images,
+    country_dict = {"usa": american_food_images, "canada": canadian_food_images, "china": chinese_food_images, "france": france_data, "india": indian_food_images, "italy": italian_food_images,
                     "japan": japanese_food_images, "korea": korean_food_images, "mexico": mexican_food_images}
     current_country = country_dict[country]
     current_text = current_country[index]
-    return
+    return current_text
     
 
 class CountryMap():
