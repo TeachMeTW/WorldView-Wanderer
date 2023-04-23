@@ -7,16 +7,9 @@ selector_height = 100
 screen_width = 1920
 screen_height = 1080
 
-# pygame.init()
 current_image_index = 0
 screen = pygame.display.set_mode((screen_width, screen_height))
-# pygame.display.set_caption("Image Selector")
 
-# left_selector = pygame.image.load("left-arrow-png-left-icon-1600-2971489872.png").convert_alpha()
-# right_selector = pygame.image.load("KTjAXb7Tq-2709733076.png").convert_alpha()
-
-# left_selector = pygame.transform.scale(left_selector, [selector_width, selector_height])
-# right_selector = pygame.transform.scale(right_selector, [selector_width, selector_height])
 
 canada_images = [
             "countryimages/canada/malo.png",
@@ -133,42 +126,9 @@ class CountryMap():
         current_image = pygame.image.load(self.img[self.index])
         current_image = pygame.transform.scale(current_image, (500,500))
         image_rect = current_image.get_rect()    
-        image_rect.center = (640, 360)
+        image_rect.center = (960, 540)
         #screen.blit(current_image, (400, 150))
         return current_image
 
 
 
-image_data = [("Picture 1", (0, 0, 0)),   
-              ("Picture 2", (255, 0, 0)),
-              ("Picture 3", (0, 255, 0))]
-
-
-# canmap = CountryMap(canada_images)
-
-
-
-
-# running = True
-
-
-# while running:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             running = False
-#         elif event.type == pygame.KEYDOWN:
-#             if event.key == pygame.K_LEFT:
-#                 canmap.left()
-#             elif event.key == pygame.K_RIGHT:
-#                 canmap.right()
-#             elif event.key == pygame.K_ESCAPE:
-#                 running = False 
-
-#     screen.fill((255, 255, 255))
-#     canmap.display()
-#     screen.blit(left_selector, dest=(400, 540))
-#     screen.blit(right_selector, dest = (1400, 540))
-#     # screen.blit(current_text_index, dest=(900, 800))
-#     pygame.display.flip()
-
-#pygame.quit()
