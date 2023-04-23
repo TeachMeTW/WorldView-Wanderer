@@ -5,7 +5,7 @@ import os
 import re
 import PIL
 import random
-from background_selector import makeCountry, CountryMap
+from background_selector import makeCountry, food_images, get_country_name, CountryMap
 
 pygame.init()
 pygame.mixer.init()
@@ -163,17 +163,39 @@ def previous_image():
     #current_text_index = my_font.render(image_data[current_text_index], False, image_data[current_text_index][1])
     display_current_image()
 
-def visit(country_map):
+def visit(country_map, country_name):
+   
     pygame.display.set_caption("Country Map")
+    MENU_MOUSE_POS = pygame.mouse.get_pos()
+    FOOD_BUTTON = Button(image = None, pos=(1000, 600), 
+        text_input="Cuisine of this Country", font=get_font(40, MC), base_color="#d8dfe5", hovering_color="White")
+    FOOD_BUTTON.changeColor(MENU_MOUSE_POS)
+    FOOD_BUTTON.update(screen)
 
     running = True
-
+    food_counter = 0
     while running:
+        for button in [FOOD_BUTTON]:
+            # if button is VISIT_BUTTON:
+            #     color = "black"
+            #     pygame.draw.rect(SCREEN, color, pygame.Rect(470, 365, 350, 60))
+            button.changeColor(MENU_MOUSE_POS)
+            button.update(screen)
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
                 pygame.quit()
                 sys.exit()
+            elif FOOD_BUTTON.checkForInput(MENU_MOUSE_POS):
+                food_pics = food_images(country_name)
+                current_dish = pygame.image.load(food_pics[food_counter]).convert_alpha()
+                current_dish = pygame.transform.scale(current_dish, [250, 250])
+                screen.blit(current_dish, dest = (1100, 550))
+                if food_counter == len(food_pics) - 1:
+                    food_counter = 0
+                else:
+                    food_counter += 1
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     country_map.left()
@@ -187,7 +209,8 @@ def visit(country_map):
         screen.blit(left_selector, dest=(200, 540))
         screen.blit(right_selector, dest = (1000, 540))
         # screen.blit(current_text_index, dest=(900, 800))
-        pygame.display.flip()
+        #pygame.display.flip()
+        pygame.display.update()
 
 def startbackground():
     #bckgr = pygame.mixer.Sound('assets/jazz.wav')
@@ -224,7 +247,7 @@ def change(dir):
 
 def main_menu():
     startbackground()
-    P=0
+    P = 0
     I = 0
     Flip = True
     BG = pygame.image.load("assets/lake.jpg")
@@ -252,6 +275,7 @@ def main_menu():
         MENU_TEXT = get_font(100, DBZ).render("Worldview Wanderer", True, "#c6e2ff")
         MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
 
+   
         VISIT_BUTTON = Button(image=pygame.image.load("assets/blue_rect.png"), pos=(640, 400), 
                             text_input="Visit a Country", font=get_font(40, MC), base_color="#d8dfe5", hovering_color="White", scale = .22)
         QUIT_BUTTON = Button(image=pygame.image.load("assets/blue_rect.png"), pos=(640, 550), 
@@ -282,9 +306,10 @@ def main_menu():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if VISIT_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    country_index = random.randint(0,7)
+                    country_index = random.randint(0,8)
                     country_map = makeCountry(country_index)
-                    visit(country_map)
+                    country_name = get_country_name(country_index)
+                    visit(country_map, country_name)
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
