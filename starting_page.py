@@ -114,21 +114,7 @@ images = ["countryimages/japan/mfuji.png",
         "countryimages/japan/imperial palace.png",
         "countryimages/japan/ichiran.png",
         "countryimages/japan/sensoji temple.png"
-        ]
-
-image_data = [("Picture 1", (0, 0, 0)),   
-            ("Picture 2", (255, 0, 0)),
-            ("Picture 3", (0, 255, 0))]
-
-current_image_index = 0
-current_text_index = 0
-
-current_image = pygame.image.load(images[current_image_index]).convert().convert_alpha()
-current_image = pygame.transform.scale(current_image, [500, 500])
-current_text_index = my_font.render('Cute Cat', False, (0, 0, 0))
-
-image_position = (screen_width // 2 - current_image.get_width() // 2, screen_height // 2 - current_image.get_height() // 2)
-
+]
 
 
 def get_font(size, type): # Returns Press-Start-2P in the desired size
@@ -141,28 +127,6 @@ def get_font_cjk(size): # Returns Press-Start-2P in the desired size
     return pygame.font.Font("assets/cjk.ttf", size)
 
 
-    
-def display_current_image():
-    screen.blit(current_image, image_position)
-
-
-def next_image():
-    global current_image_index, current_image, current_text_index
-    current_image_index = (current_image_index + 1) % len(images)
-    #current_text_index = (current_text_index + 1) % len(image_data)
-    current_image = pygame.image.load(images[current_image_index]).convert().convert_alpha()
-    current_image = pygame.transform.scale(current_image, [500, 500])
-    #current_text_index = my_font.render(image_data[current_text_index], False, image_data[current_text_index][1])
-    display_current_image()
-
-def previous_image():
-    global current_image_index, current_image, current_text_index
-    current_image_index = (current_image_index - 1) % len(images)
-    # current_text_index = (current_text_index - 1) % len(image_data)
-    current_image = pygame.image.load(images[current_image_index]).convert().convert_alpha()
-    current_image = pygame.transform.scale(current_image, [500, 500])
-    #current_text_index = my_font.render(image_data[current_text_index], False, image_data[current_text_index][1])
-    display_current_image()
 
 def visit(country_map):
     pygame.display.set_caption("Country Map")
@@ -175,13 +139,14 @@ def visit(country_map):
     
     screen.blit(left_selector, dest=(200, 540))
     screen.blit(right_selector, dest = (1000, 540))
-    country_map.display()
+    
     while running:
+        country_map.display()
         screen.fill((255, 255, 255))
         MENU_MOUSE_POS = pygame.mouse.get_pos()
         curr = f"NOW PLAYING: {CURRENT_SONG}"
         w = get_font_cjk(40)
-        text = w.render(curr, True, 'white')
+        text = w.render(curr, True, 'black')
         length = text.get_size()
         NOW_PLAYING = Button(image=pygame.transform.scale(pygame.image.load("assets/Quit Rect.png"), (1.1*length[0], 1.1*length[1]) ), pos=(640, 650), 
             text_input=f"{curr}", font=get_font_cjk(40), base_color="#d7fcd4", hovering_color="White")
@@ -342,16 +307,16 @@ def main_menu():
                     pygame.quit()
                     sys.exit()
                 if MUTE_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    if P==0:
+                    if P==1:
                         MUTE_BUTTON.image = pygame.transform.scale(pygame.image.load('assets/muted.png'),(100,100))
                         MUTE_BUTTON.update(SCREEN)
                         pause()
-                        P=1
+                        P=0
                     else:
                         MUTE_BUTTON.image = pygame.transform.scale(pygame.image.load('assets/volume.png'),(100,100))
                         MUTE_BUTTON.update(SCREEN)
                         resume()
-                        P=0
+                        P=1
                 if TEST_BUTTON.checkForInput(MENU_MOUSE_POS):
                     change(CURRENT_LOC)
                     

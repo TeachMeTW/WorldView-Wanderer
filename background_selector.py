@@ -26,6 +26,15 @@ canada_images = [
             "countryimages/canada/Poutineville.png",
             "countryimages/canada/Stanley Park.png",
         ]
+
+canada_data = [
+    "Alo Restaurant",
+    "Chateau Frotenac",
+    "CN Tower",
+    "Niagara Falls",
+    "Poutineville Restaurant",
+    "Stanley Park"
+]
 images_usa = [
     "countryimages/usa/GGB.png",
     "countryimages/usa/gateway.png",
@@ -98,11 +107,15 @@ def makeCountry(country_index):
 class CountryMap():
     index = 0
     img = []
+    data = []
     def __init__(self, image_list):
 
         for i in image_list:
             self.img.append(i)
+        # for x in data_list:
+        #     self.data.append(i)
         self.index = 0
+        
     def left(self):
         if self.index < len(self.img)-1:
             self.index+=1
@@ -120,7 +133,15 @@ class CountryMap():
         image_rect = current_image.get_rect()    
         image_rect.center = (640, 360)
         screen.blit(current_image, (400, 150))
-
+    
+    # def renderText(self):
+    #     font = pygame.font.Font(None, 36)
+    #     self.index += 1
+    #     text_render = font.render(self.data, True, (255,255,255))
+    #     text_rect = text_render.get_rect()
+    #     text_rect.center = (400, 670)
+    #     screen.blit(text_render, text_rect)
+    #     pygame.display.update() 
 
 
 image_data = [("Picture 1", (0, 0, 0)),   
