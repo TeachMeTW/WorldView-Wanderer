@@ -84,7 +84,13 @@ images_korea = [
     ]
 
 korea_data = [
-    ""
+    "Gwangjang Market",
+    "Jeju Island",
+    "Myeongdong Kyoja"
+    "Gwanghwamun"
+    "Dol Hareubang"
+    "Gyeongbokgung Palace",
+]
 images_mexico = [
     "countryimages/Mexico/Mexico 1.png",
     "countryimages/Mexico/Mexico 2.png",
