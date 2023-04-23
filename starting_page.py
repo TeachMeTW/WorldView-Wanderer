@@ -69,7 +69,7 @@ mx = Playlist('assets/Mexico')
 kr = Playlist('assets/Korea')
 ity = Playlist('assets/Italy')
 ind = Playlist('assets/India')
-
+ch = Playlist('assets/China')
 
 
 playlists = [jp,usa,fr]
@@ -327,6 +327,8 @@ def change(dir):
         ity.play()
     if dir == 'usa':
         usa.play()
+    if dir == 'china':
+        ch.play()
     pass
 
 
