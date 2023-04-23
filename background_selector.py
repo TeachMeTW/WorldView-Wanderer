@@ -47,6 +47,14 @@ images_france = [
     "countryimages//France//notre_dame.png"
     "countryimages//France//versailles.png"
     ]
+france_data = [
+    "Arc de Triomphe",
+    "Eiffel Tower",
+    "Comptoir du Relais",
+    "Tour Montparnasse",
+    "Notre Dame",
+    "Versailles"
+]
 
 
 images_italy = [
@@ -58,7 +66,14 @@ images_italy = [
     "countryimages/italy/italy6.png"
 ]
 
-
+italy_data = [
+    "Cinque Terre",
+    "Leaning Tower of Pisa",
+    "Colosseum",
+    "Trattoria da Vittorio",
+    "Osteria Francescana",
+    "Duomo di Milano"
+]
 images_korea = [
     "countryimages/korea/korea1.png",
     "countryimages/korea/korea2.png",
@@ -68,6 +83,8 @@ images_korea = [
     "countryimages/korea/korea6.png"
     ]
 
+korea_data = [
+    ""
 images_mexico = [
     "countryimages/Mexico/Mexico 1.png",
     "countryimages/Mexico/Mexico 2.png",
@@ -77,10 +94,29 @@ images_mexico = [
     "countryimages/Mexico/Mexico 6.png"
 ]
 
-japan_images = [""
+mexico_data = [ 
+    "Teotihuacan",
+    "Pujol",
+    "Notre Dame",
+    "La Carnita",
+    "Chichen Itza",
+    "Palacio de Bellas Artes"
+]
+
+japan_images = ["countryimages\japan\olpntng-style-japanese-high-tech-futuristic-village-in-2085-nighttime-cityscape-with-detailed-and-.png",
+                "countryimages\japan\olpntng-style-japanese-restaurant-detailed-and-sharp-focused-classic-architecture-with-neon-accent-.png",
+                "countryimages\japan\olpntng-style-mount-fuji-detailed-and-sharp-focusedasymmetric-composition-golden-ratio-dramatic-.png",
+                "countryimages\japan\olpntng-style-nikko-toshogu-detailed-and-sharp-focused-classic-architecture-with-neon-accents-as-.png",
+                "countryimages\japan\olpntng-style-osaka-castle-detailed-and-sharp-focused-classic-architecture-with-neon-accents-asy-.png",
+                "countryimages\japan\olpntng-style-shinjuku-gyoen-national-garden-sakura-trees-detailed-and-sharp-focused-classic-arch-.png"
           ]
 
-india_images = [""]
+india_images = ["countryimages/india/india1.png",
+                "countryimages/india/india2.png",
+                "countryimages/india/india3.png",
+                "countryimages/india/india4.png",
+                "countryimages/india/india5.png",
+                "countryimages/india/india6.png"]
 
 china_images = ["countryimages//China//forbidden_city.png",
                 "countryimages//China//great_wall.png",
