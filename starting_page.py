@@ -397,6 +397,7 @@ def main():
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
+                    
                 if MUTE_BUTTON.checkForInput(MENU_MOUSE_POS):
                     if P==1:
                         MUTE_BUTTON.image = pygame.transform.scale(pygame.image.load('assets/muted.png'),(100,100))

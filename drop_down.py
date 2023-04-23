@@ -67,7 +67,7 @@ def render_pst_clock(font, st):
     pst = datetime.timezone(datetime.timedelta(hours= st))
     now = datetime.datetime.now(pst)
     time_str = now.strftime('%I:%M:%S %p')
-    time_surface = font.render(time_str, True, (0, 0, 0))
+    time_surface = font.render('Local Country Time: '+time_str, True, (0, 0, 0))
     return time_surface
 
 def render_date(font, timezone):
