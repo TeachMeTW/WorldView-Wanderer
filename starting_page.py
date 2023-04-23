@@ -24,7 +24,7 @@ pygame.display.set_caption("Wordview Wanderer")
 clock = pygame.time.Clock()
 running = True
 MUSIC_END = pygame.USEREVENT+1
-CURRENT_SONG = 'Main-Menu'
+CURRENT_SONG = ' '
 CURRENT_LOC = 'Japan'
 
 class Playlist:
@@ -166,10 +166,38 @@ def previous_image():
 
 def visit(country_map):
     pygame.display.set_caption("Country Map")
-
+    screen.fill((255, 255, 255))
+    P=0
+    I = 0
     running = True
-
+    MUTE_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/volume.png'), (100,100)), pos=(50,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
+    TEST_BUTTON = Button(image=pygame.transform.scale(pygame.image.load('assets/mbut.png'), (100,100)), pos=(1100,670),  text_input="", font=get_font(0, MC), base_color="#d7fcd4", hovering_color="White")
+    
+    screen.blit(left_selector, dest=(200, 540))
+    screen.blit(right_selector, dest = (1000, 540))
+    country_map.display()
     while running:
+        screen.fill((255, 255, 255))
+        MENU_MOUSE_POS = pygame.mouse.get_pos()
+        curr = f"NOW PLAYING: {CURRENT_SONG}"
+        w = get_font_cjk(40)
+        text = w.render(curr, True, 'white')
+        length = text.get_size()
+        NOW_PLAYING = Button(image=pygame.transform.scale(pygame.image.load("assets/Quit Rect.png"), (1.1*length[0], 1.1*length[1]) ), pos=(640, 650), 
+            text_input=f"{curr}", font=get_font_cjk(40), base_color="#d7fcd4", hovering_color="White")
+
+
+   
+        
+
+        for button in [TEST_BUTTON, MUTE_BUTTON, NOW_PLAYING]:
+            # if button is VISIT_BUTTON:
+            #     color = "black"
+            #     pygame.draw.rect(SCREEN, color, pygame.Rect(470, 365, 350, 60))
+            button.changeColor(MENU_MOUSE_POS)
+            button.update(SCREEN)
+
+            
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -178,17 +206,38 @@ def visit(country_map):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     country_map.left()
-                elif event.key == pygame.K_RIGHT:
+                    country_map.display()
+                if event.key == pygame.K_RIGHT:
                     country_map.right()
-                elif event.key == pygame.K_ESCAPE:
+                    country_map.display()
+                if event.key == pygame.K_ESCAPE:
                     running = False 
-
-        screen.fill((255, 255, 255))
-        country_map.display()
-        screen.blit(left_selector, dest=(200, 540))
-        screen.blit(right_selector, dest = (1000, 540))
+                if MUTE_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    if P==0:
+                        MUTE_BUTTON.image = pygame.transform.scale(pygame.image.load('assets/muted.png'),(100,100))
+                        MUTE_BUTTON.update(SCREEN)
+                        pause()
+                        P=1
+                    else:
+                        MUTE_BUTTON.image = pygame.transform.scale(pygame.image.load('assets/volume.png'),(100,100))
+                        MUTE_BUTTON.update(SCREEN)
+                        resume()
+                        P=0
+                if TEST_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    
+                    change(CURRENT_LOC)
+                    
+                    
+            for p in playlists:
+                    if event.type == MUSIC_END and len(p.songs) == 0:
+                        p.play()
+                        
+        
+        
+        
+        pygame.display.update()
         # screen.blit(current_text_index, dest=(900, 800))
-        pygame.display.flip()
+        
 
 def startbackground():
     #bckgr = pygame.mixer.Sound('assets/jazz.wav')
@@ -285,6 +334,8 @@ def main_menu():
                 if VISIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     country_index = random.randint(0,7)
                     country_map = makeCountry(country_index)
+                    global CURRENT_LOC
+                    CURRENT_LOC = country_dict[country_index]
                     change(country_dict[country_index])
                     visit(country_map)
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
