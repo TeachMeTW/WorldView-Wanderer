@@ -28,6 +28,7 @@ canada_data = [
     "Poutineville Restaurant",
     "Stanley Park"
 ]
+
 images_usa = [
     "countryimages/usa/GGB.png",
     "countryimages/usa/gateway.png",

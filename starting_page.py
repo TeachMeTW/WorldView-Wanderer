@@ -178,12 +178,15 @@ def visit(country_map, country):
     #print(country_map.img)
     food_counter = 0
     valid_dish = None
+    valid_text = 0
     while running:
         img = country_map.display()
         screen.fill((255, 255, 255))
         screen.blit(img,(400, 60))
         if valid_dish is not None:
             screen.blit(valid_dish, (30, 200))
+
+        
         MENU_MOUSE_POS = pygame.mouse.get_pos()
         curr = f"NOW PLAYING: {CURRENT_SONG}"
         w = get_font_cjk(40)
