@@ -6,7 +6,7 @@ from starting_page import *
 from background_selector import makeCountry, CountryMap
 
 pg.font.init()
-country_dict = {0: 'Canada', 1: 'USA', 2: 'France', 3: 'Italy', 4: 'Korea', 5: 'Mexico', 6: 'Japan', 7: 'India'}
+country_dict = {0: "usa", 1: "canada", 2: "china", 3: "france", 4: "india", 5: "italy", 6: "japan", 7: "korea", 8: "mexico"}
 country_dict2 = { country_dict[k]:k for k in country_dict}
 class DropDown():
 
