@@ -16,7 +16,8 @@ selector_width = 100
 selector_height = 100
 screen_width = 1280
 screen_height = 720
-
+country_dict = {0: 'Canada', 1: 'USA', 2: 'French', 3: 'Italy', 4: 'Korea', 5: 'Mexico', 6: 'Japan', 7: 'India'}
+   
 
 SCREEN = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Wordview Wanderer")
@@ -68,11 +69,11 @@ class Playlist:
 jp = Playlist('assets/Japan')
 usa = Playlist('assets/USA')
 fr = Playlist('assets/French')
-# ca = Playlist('assets/Canada')
-# mx = Playlist('assets/Mexico')
-# kr = Playlist('assets/Korea')
-# ity = Playlist('assets/Italy')
-# ind = Playlist('assets/India')
+ca = Playlist('assets/Canada')
+mx = Playlist('assets/Mexico')
+kr = Playlist('assets/Korea')
+ity = Playlist('assets/Italy')
+ind = Playlist('assets/India')
 
 
 
@@ -284,6 +285,7 @@ def main_menu():
                 if VISIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     country_index = random.randint(0,7)
                     country_map = makeCountry(country_index)
+                    change(country_dict[country_index])
                     visit(country_map)
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
