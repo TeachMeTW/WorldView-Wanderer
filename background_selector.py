@@ -30,11 +30,10 @@ canada_data = [
     "Stanley Park"
 ]
 images_usa = [
-    "countryimages/usa/GGB.png",
-    "countryimages/usa/gateway.png",
-    "countryimages/usa/in out.png",
-    "countryimages/usa/katz.png",
-    "countryimages/usa/rushmore.png",
+    "countryimages/usa/borgor.png",
+    "countryimages/usa/goldengate.png",
+    "countryimages/usa/observatory.png",
+    "countryimages/usa/sf.png",
     "countryimages/usa/yellowstone.png",
     ]
 
