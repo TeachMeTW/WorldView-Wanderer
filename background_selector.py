@@ -103,19 +103,19 @@ mexico_data = [
     "Palacio de Bellas Artes"
 ]
 
-japan_images = ["countryimages\japan\olpntng-style-japanese-high-tech-futuristic-village-in-2085-nighttime-cityscape-with-detailed-and-.png",
-                "countryimages\japan\olpntng-style-japanese-restaurant-detailed-and-sharp-focused-classic-architecture-with-neon-accent-.png",
-                "countryimages\japan\olpntng-style-mount-fuji-detailed-and-sharp-focusedasymmetric-composition-golden-ratio-dramatic-.png",
-                "countryimages\japan\olpntng-style-nikko-toshogu-detailed-and-sharp-focused-classic-architecture-with-neon-accents-as-.png",
-                "countryimages\japan\olpntng-style-osaka-castle-detailed-and-sharp-focused-classic-architecture-with-neon-accents-asy-.png",
-                "countryimages\japan\olpntng-style-shinjuku-gyoen-national-garden-sakura-trees-detailed-and-sharp-focused-classic-arch-.png"
+japan_images = ["countryimages//japan//olpntng-style-conveyor-belt-sushifood-sushi-japanese-food-katsu-sakeasymmetric-composition-.png",
+                "countryimages//japan//olpntng-style-japanese-restaurant-detailed-and-sharp-focused-classic-architecture-with-neon-accent-.png",
+                "countryimages//japan//olpntng-style-mount-fuji-detailed-and-sharp-focusedasymmetric-composition-golden-ratio-dramatic-.png",
+                "countryimages//japan//olpntng-style-nikko-toshogu-detailed-and-sharp-focused-classic-architecture-with-neon-accents-as-.png",
+                "countryimages//japan//olpntng-style-osaka-castle-detailed-and-sharp-focused-classic-architecture-with-neon-accents-asy-.png",
+                "countryimages//japan//tokyo-towerasymmetric-composition-golden-ratio-dramatic-awe-inspiring-full-spectrum-color-pall-.png"
           ]
 
-india_images = ["countryimages/india/india1.png",
-                "countryimages/india/india2.png",
-                "countryimages/india/india3.png",
+india_images = ["countryimages/india/indiares2.png",
                 "countryimages/india/india4.png",
                 "countryimages/india/india5.png",
+                "countryimages/india/indiares1.png",
+                "countryimages/india/gateway_india.png",
                 "countryimages/india/india6.png"]
 
 china_images = ["countryimages//China//forbidden_city.png",
