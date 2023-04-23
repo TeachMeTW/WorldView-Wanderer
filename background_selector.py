@@ -12,12 +12,13 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 
 
 canada_images = [
-            "countryimages/canada/malo.png",
-            "countryimages/canada/Chateau_Frotenac.png",
-            "countryimages/canada/CN_tower.png",
-            "countryimages/canada/Niagara Falls.png",
-            "countryimages/canada/Poutineville.png",
-            "countryimages/canada/Stanley Park.png",
+            "countryimages/Canada/Canada 1.png",
+            "countryimages/Canada/Canada 2.png",
+            "countryimages/Canada/Canada 3.png",
+            "countryimages/Canada/Canada 4.png",
+            "countryimages/Canada/Canada 5.png",
+            "countryimages/Canada/Canada 6.png"
+            
         ]
 
 canada_data = [
@@ -39,64 +40,54 @@ images_usa = [
 
 
 images_france = [
-    "countryimages/france/arc de trimophe.png",
-    "countryimages/france/comptoir.png",
-    "countryimages/france/eiffel.png",
-    "countryimages/france/notre dame.png",
-    "countryimages/france/tour.png",
-    "countryimages/france/versailles.png"  
+    "countryimages//France//arc.png"
+    "countryimages//France//eiffel.png"
+    "countryimages//France//comptoir.png"
+    "countryimages//France//tour.png"
+    "countryimages//France//notre_dame.png"
+    "countryimages//France//versailles.png"
     ]
 
 
 images_italy = [
-    "countryimages/italy/coloseeum.png",
-    "countryimages/italy/duomo.png",
+    "countryimages/italy/italy1.png",
+    "countryimages/italy/italy2.png",
     "countryimages/italy/enzo.png",
-    "countryimages/italy/Osteria.png",
-    "countryimages/italy/pisa.png"
-    "countryimages/italy/cinque.png"
+    "countryimages/italy/italy3.png",
+    "countryimages/italy/italy5.png"
+    "countryimages/italy/italyboat.png"
 ]
 
 
 images_korea = [
-    "countryimages/korea/gwanghwaum.png",
-    "countryimages/korea/gwangjang.png",
-    "countryimages/korea/jeju.png",
-    "countryimages/korea/kyoja.png",
-    "countryimages/korea/namsan.png",
-    "countryimages/korea/palace.png"
+    "countryimages/korea/korea1.png",
+    "countryimages/korea/korea2.png",
+    "countryimages/korea/korea3.png",
+    "countryimages/korea/korea4.png",
+    "countryimages/korea/korea5.png",
+    "countryimages/korea/korea6.png"
     ]
 
 images_mexico = [
-    "countryimages/mexico/Cancun.png",
-    "countryimages/mexico/Chichen Itza.png",
-    "countryimages/mexico/La-Carnita.png",
-    "countryimages/mexico/Palacio-De-Bellas-Artes.png",
-    "countryimages/mexico/Pujol.png",
-    "countryimages/mexico/Teotihuacan-022.jpg"
+    "countryimages/Mexico/Mexico 1.png",
+    "countryimages/Mexico/Mexico 2.png",
+    "countryimages/Mexico/Mexico 3.png",
+    "countryimages/Mexico/Mexico 4.png",
+    "countryimages/Mexico/Mexico 5.png",
+    "countryimages/Mexico/Mexico 6.png"
 ]
 
-japan_images = ["countryimages/japan/mfuji.png", 
-          "countryimages/japan/sushi dai.png", 
-          "countryimages/japan/mtokyo tower.png",
-          "countryimages/japan/imperial palace.png",
-          "countryimages/japan/ichiran.png",
-          "countryimages/japan/sensoji temple.png"
+japan_images = [""
           ]
 
-india_images = ["countryimages/india/bukhara.png",
-                "countryimages/india/gateway of india.png",
-                "countryimages/india/india gate.png",
-                "countryimages/india/karim.png",
-                "countryimages/india/red fort.png",
-                "countryimages/india/taj mahal.png"]
+india_images = [""]
 
-china_images = ["countryimages/china/forbidden_city.jpeg",
-                "countryimages/china/great_wall.jpeg",
-                "countryimages/china/quanjude.jpeg",
-                "countryimages/china/summer_palace.jpeg",
-                "countryimages/china/terracotta-army.jpg",
-                "countryimages/china/south_beauty.jpeg"
+china_images = ["countryimages//China//forbidden_city.png",
+                "countryimages//China//great_wall.png",
+                "countryimages//China//terracotta.png",
+                "countryimages//China//quanjude.png",
+                "countryimages//China//south_beauty.png",
+                "countryimages//China//summer_palace.png"]
                 ]
 american_food_images = ["food/american_food/lobster_rolls.jpg",
                         "food/american_food/ny_pizza.jpg",
